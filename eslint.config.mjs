@@ -3,6 +3,7 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default [
+  { extends: ['plugin:storybook/recommended'] },
   { files: ['**/*.{js,mjs,cjs,ts,tsx}'] },
   { files: ['**/*.js'], languageOptions: { sourceType: 'commonjs' } },
   { languageOptions: { globals: globals.browser } },
