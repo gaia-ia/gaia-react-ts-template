@@ -8,8 +8,20 @@
   background-color: #0d0d0d;
 }
 
-.container span:first-child {
+.container * {
+  max-width: 650px;
+}
+
+.container img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.container span {
   color: #fff;
+  text-align: center;
 }
 
 .container span:last-child {
