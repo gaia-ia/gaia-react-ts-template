@@ -1,0 +1,29 @@
+.large {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.medium {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.small,
+.link {
+  font-size: 1rem;
+}
+
+.tiny {
+  font-size: 0.875rem;
+}
+
+.link {
+  text-decoration: underline;
+  color: var(--color-secondary-10);
+}
+
+.small,
+.tiny,
+.link {
+  font-weight: 400;
+}
