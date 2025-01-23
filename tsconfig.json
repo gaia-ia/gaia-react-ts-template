@@ -11,7 +11,8 @@
       "@hooks/*": ["./hooks/*"],
       "@pages/*": ["./pages/*"],
       "@types/*": ["./types/*"],
-      "@utils/*": ["./utils/*"]
+      "@utils/*": ["./utils/*"],
+      "@translation/*": ["./translation/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
