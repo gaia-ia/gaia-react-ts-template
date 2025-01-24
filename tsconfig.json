@@ -4,15 +4,16 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": "./src",
     "paths": {
-      "@assets/*": ["./assets/*"],
       "@api/*": ["./api/*"],
+      "@assets/*": ["./assets/*"],
       "@components": ["./components"],
-      "@contexts/*": ["./contexts/*"],
-      "@hooks/*": ["./hooks/*"],
+      "@libs/*": ["./libs/*"],
       "@pages/*": ["./pages/*"],
+      "@providers": ["./providers"],
+      "@hooks": ["./hooks"],
+      "@translation/*": ["./translation/*"],
       "@types/*": ["./types/*"],
-      "@utils/*": ["./utils/*"],
-      "@translation/*": ["./translation/*"]
+      "@utils/*": ["./utils/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,

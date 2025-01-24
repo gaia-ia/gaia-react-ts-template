@@ -1,11 +1,15 @@
+import { useGetAdvice } from '@api/advice';
 import Logo from '@assets/images/logo.svg';
 import { Body, Title } from '@components';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import styles from './styles.module.css';
 
 const Homepage = () => {
   const { t, i18n } = useTranslation();
+  const { data } = useGetAdvice();
+  const asda = data?.slip.advice;
 
   const changeLanguage = () => {
     const lng = i18n.language;
@@ -22,6 +26,10 @@ const Homepage = () => {
         break;
     }
   };
+
+  useEffect(() => {
+    if (data) console.log(data.slip.advice);
+  }, [data]);
 
   return (
     <div className={styles.container}>
