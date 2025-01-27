@@ -2,6 +2,24 @@
   "Homepage": {
     "title": "Welcome to GaIA React + TypeScript Template",
     "body": "This is a template for a React + TypeScript project with a basic configuration.",
-    "changeLanguage": "Change Language"
+    "buttons": {
+      "login": "Login",
+      "changeLanguage": "Change language"
+    }
+  },
+  "Login": {
+    "title": "Welcome to GaIA",
+    "buttons": {
+      "forgotPassword": "Forgot password?",
+      "login": "Login"
+    }
+  },
+  "inputs": {
+    "email": {
+      "placeholder": "Email"
+    },
+    "password": {
+      "placeholder": "Password"
+    }
   }
 }

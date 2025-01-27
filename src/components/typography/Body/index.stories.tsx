@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Body from '.';
 
 const meta: Meta<typeof Body> = {
+  title: 'Components/typography/Body',
+  tags: ['autodocs'],
   component: Body,
   argTypes: {
     variant: {

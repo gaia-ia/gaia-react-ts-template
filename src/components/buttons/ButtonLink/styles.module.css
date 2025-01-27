@@ -1,0 +1,44 @@
+.button {
+  background-color: #013d9e;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #0047ba;
+}
+
+.button span {
+  color: #fff;
+}
+
+.button.outlined {
+  background-color: transparent;
+  border: 1px solid #013d9e;
+}
+
+.button.outlined:hover span {
+  text-decoration: underline;
+}
+
+.button.outlined span {
+  color: #013d9e;
+}
+
+.button.text {
+  background-color: transparent;
+  color: #013d9e;
+}
+
+.button.text span {
+  color: #013d9e;
+}
+
+.button.text:hover span {
+  text-decoration: underline;
+}

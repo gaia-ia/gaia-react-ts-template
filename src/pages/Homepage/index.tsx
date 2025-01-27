@@ -1,6 +1,6 @@
 import { useGetAdvice } from '@api/advice';
 import Logo from '@assets/images/logo.svg';
-import { Body, Title } from '@components';
+import { Body, Button, ButtonLink, Title } from '@components';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -37,9 +37,15 @@ const Homepage = () => {
       <Title>{t('Homepage.title')}</Title>
       <Body>{t('Homepage.body')}</Body>
 
-      <button onClick={changeLanguage} className={styles.button}>
-        <Body>{t('Homepage.changeLanguage')}</Body>
-      </button>
+      <div className={styles.buttons}>
+        <Button className={styles.button} onClick={changeLanguage}>
+          {t('Homepage.buttons.changeLanguage')}
+        </Button>
+
+        <ButtonLink className={styles.button} to="/login">
+          {t('Homepage.buttons.login')}
+        </ButtonLink>
+      </div>
     </div>
   );
 };
