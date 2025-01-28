@@ -15,7 +15,7 @@
 </g>
 <defs>
 <clipPath id="clip0_4_2">
-<rect width="303" height="384" fill="white"/>
+<rect width="303" height="384" fill="var(--color-00dp)"/>
 </clipPath>
 </defs>
 </svg>

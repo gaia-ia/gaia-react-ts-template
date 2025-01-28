@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: #111418;
+  background-color: var(--color-00dp);
 }
 
 .login_container {
@@ -44,7 +44,7 @@
 }
 
 .title span {
-  color: #fff;
+  color: var(--color-text-primary);
 }
 
 .title {
@@ -73,7 +73,7 @@
 }
 
 .input_container a span {
-  color: #fff !important;
+  color: var(--color-text-primary) !important;
   text-decoration: underline;
 }
 

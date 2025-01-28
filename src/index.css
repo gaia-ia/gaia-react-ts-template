@@ -28,3 +28,27 @@ img {
   display: block;
   max-width: 100%;
 }
+
+/* colors */
+
+:root {
+  color-scheme: light dark;
+
+  --color-primary: #013d9e;
+  --color-white: #fff;
+
+  --color-00dp: light-dark(#fff, #111418);
+  --color-01dp: light-dark(#edeff2, #1d2024);
+
+  --color-text-primary: light-dark(#101012, #fff);
+
+  --color-error: #ff0000;
+}
+
+.light {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
