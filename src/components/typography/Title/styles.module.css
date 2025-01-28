@@ -1,0 +1,28 @@
+.title {
+  font-family: 'Source Code Pro', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.large {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.medium {
+  font-size: 1.75rem;
+}
+
+.small {
+  font-size: 1.5rem;
+}
+
+.tiny {
+  font-size: 1.125rem;
+}
+
+.medium,
+.small,
+.tiny {
+  font-weight: 600;
+}

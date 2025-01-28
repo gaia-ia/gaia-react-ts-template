@@ -1,0 +1,32 @@
+{
+  "Homepage": {
+    "title": "Boas vindas ao GaIA React + TypeScript Template",
+    "body": "Este é um modelo para um projeto React + TypeScript com uma configuração básica.",
+    "buttons": {
+      "logout": "Sair",
+      "changeLanguage": "Alterar idioma"
+    }
+  },
+  "Login": {
+    "title": "Boas vindas à GaIA",
+    "buttons": {
+      "forgotPassword": "Esqueceu sua senha?",
+      "login": "Entrar"
+    }
+  },
+  "inputs": {
+    "email": {
+      "placeholder": "Email",
+      "label": "Email"
+    },
+    "password": {
+      "placeholder": "Senha",
+      "label": "Senha"
+    }
+  },
+  "errors": {
+    "invalidInput": "{{input}} é inválido",
+    "invalidFormat": "Formato de {{input}} é inválido",
+    "required": "{{input}} é obrigatório"
+  }
+}
