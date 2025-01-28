@@ -10,7 +10,7 @@
   "Login": {
     "title": "Welcome to GaIA",
     "buttons": {
-      "forgotPassword": "Forgot password?",
+      "forgotPassword": "Forgot your password?",
       "login": "Login"
     }
   },
