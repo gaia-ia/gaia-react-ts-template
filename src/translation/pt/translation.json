@@ -3,7 +3,7 @@
     "title": "Boas vindas ao GaIA React + TypeScript Template",
     "body": "Este é um modelo para um projeto React + TypeScript com uma configuração básica.",
     "buttons": {
-      "login": "Entrar",
+      "logout": "Sair",
       "changeLanguage": "Alterar idioma"
     }
   },
