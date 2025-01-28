@@ -16,10 +16,17 @@
   },
   "inputs": {
     "email": {
-      "placeholder": "Email"
+      "placeholder": "Email",
+      "label": "Email"
     },
     "password": {
-      "placeholder": "Contraseña"
+      "placeholder": "Contraseña",
+      "label": "Contraseña"
     }
+  },
+  "errors": {
+    "invalidInput": "{{input}} es inválido",
+    "invalidFormat": "Formato de {{input}} es inválido",
+    "required": "{{input}} es requerido"
   }
 }
