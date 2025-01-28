@@ -1,5 +1,5 @@
 import { useGetAdvice } from '@api/advice';
-import Logo from '@assets/images/logo.svg';
+import SquareLogo from '@assets/icons/logos/SquareLogo';
 import { Body, Button, ButtonLink, Title } from '@components';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -36,7 +36,7 @@ const Homepage = () => {
 
   return (
     <div className={styles.container}>
-      <img src={Logo} alt="Logo" />
+      <SquareLogo size="100" />
 
       <Title>{t('Homepage.title')}</Title>
       <Body>{t('Homepage.body')}</Body>

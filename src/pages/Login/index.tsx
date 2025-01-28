@@ -1,4 +1,4 @@
-import Logo from '@assets/images/logo.svg';
+import { IconSquareLogo } from '@assets/icons';
 import { Button, ButtonLink, Input, Title } from '@components';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -59,7 +59,7 @@ const Login = () => {
       <div className={styles.right_side}>
         <div className={styles.login_container}>
           <div className={styles.logo}>
-            <img src={Logo} alt="Logo" />
+            <IconSquareLogo size="100" />
           </div>
           <div className={styles.title}>
             <Title variant="small">{t('Login.title')}</Title>
