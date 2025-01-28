@@ -26,6 +26,10 @@ const Homepage = () => {
     }
   };
 
+  const logout = () => {
+    window.localStorage.removeItem('token');
+  };
+
   useEffect(() => {
     if (data) console.log(data.slip.advice);
   }, [data]);
@@ -42,8 +46,13 @@ const Homepage = () => {
           {t('Homepage.buttons.changeLanguage')}
         </Button>
 
-        <ButtonLink className={styles.button} to="/login">
-          {t('Homepage.buttons.login')}
+        <ButtonLink
+          className={styles.button}
+          onClick={logout}
+          variant="text"
+          to="/login"
+        >
+          {t('Homepage.buttons.logout')}
         </ButtonLink>
       </div>
     </div>

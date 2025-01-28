@@ -3,12 +3,14 @@ import { Button, ButtonLink, Input, Title } from '@components';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
 import styles from './styles.module.css';
 
 const Login = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const schema = z.object({
     email: z
@@ -46,8 +48,9 @@ const Login = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<ILoginForm> = data => {
-    console.log(data);
+  const onSubmit: SubmitHandler<ILoginForm> = () => {
+    window.localStorage.setItem('token', '123');
+    navigate('/');
   };
 
   return (
