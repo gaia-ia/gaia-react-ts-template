@@ -28,3 +28,7 @@
 .input_container:has(input:focus) {
   border: 1px solid #013d9e;
 }
+
+.error {
+  color: #ff0000;
+}

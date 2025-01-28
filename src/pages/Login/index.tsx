@@ -1,14 +1,54 @@
 import Logo from '@assets/images/logo.svg';
 import { Button, ButtonLink, Input, Title } from '@components';
-import React from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
 
 import styles from './styles.module.css';
 
 const Login = () => {
   const { t } = useTranslation();
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+
+  const schema = z.object({
+    email: z
+      .string()
+      .nonempty(t('errors.required', { input: t('inputs.email.label') }))
+      .email(
+        t('errors.invalidFormat', {
+          input: t('inputs.email.label'),
+        })
+      )
+      .refine(
+        email => email === 'admin@gaia.dev',
+        t('errors.invalidInput', {
+          input: t('inputs.email.label'),
+        })
+      ),
+    password: z
+      .string()
+      .nonempty(t('errors.required', { input: t('inputs.password.label') }))
+      .refine(
+        password => password === 'admin',
+        t('errors.invalidInput', {
+          input: t('inputs.password.label'),
+        })
+      ),
+  });
+
+  type ILoginForm = z.infer<typeof schema>;
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILoginForm>({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit: SubmitHandler<ILoginForm> = data => {
+    console.log(data);
+  };
 
   return (
     <div className={styles.container}>
@@ -21,24 +61,26 @@ const Login = () => {
           <div className={styles.title}>
             <Title variant="small">{t('Login.title')}</Title>
           </div>
-          <form action="" className={styles.form}>
+          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.input_container}>
               <Input
+                {...register('email', {
+                  required: true,
+                })}
                 id="email"
                 type="email"
                 placeholder={t('inputs.email.placeholder')}
-                name="email"
-                value={email}
-                onInput={e => setEmail(e.target.value)}
+                error={errors.email?.message}
               />
 
               <Input
+                {...register('password', {
+                  required: true,
+                })}
                 id="password"
                 type="password"
                 placeholder={t('inputs.password.placeholder')}
-                name="password"
-                value={password}
-                onInput={e => setPassword(e.target.value)}
+                error={errors.password?.message}
               />
 
               <ButtonLink to="#" variant="text">
