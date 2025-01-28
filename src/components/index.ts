@@ -17,3 +17,6 @@ export { type ButtonLinkProps } from './buttons/ButtonLink/types';
 //  inputs
 export { default as Input } from './inputs/Input';
 export { type InputProps } from './inputs/Input/types';
+
+//  general
+export { default as Header } from './general/Header';

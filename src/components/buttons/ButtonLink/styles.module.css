@@ -1,5 +1,5 @@
 .button {
-  background-color: #013d9e;
+  background-color: var(--color-primary);
   border: none;
   padding: 8px 20px;
   border-radius: 4px;
@@ -19,7 +19,7 @@
 
 .button.outlined {
   background-color: transparent;
-  border: 1px solid #013d9e;
+  border: 1px solid var(--color-text-primary-color);
 }
 
 .button.outlined:hover span {
@@ -27,16 +27,16 @@
 }
 
 .button.outlined span {
-  color: #013d9e;
+  color: var(--color-primary);
 }
 
 .button.text {
   background-color: transparent;
-  color: #013d9e;
+  color: var(--color-text-primary-color);
 }
 
 .button.text span {
-  color: #013d9e;
+  color: var(--color-text-primary-color);
 }
 
 .button.text:hover span {

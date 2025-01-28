@@ -1,5 +1,5 @@
 .button {
-  background-color: #013d9e;
+  background-color: var(--color-primary);
   border: none;
   padding: 8px 20px;
   border-radius: 4px;
@@ -14,4 +14,30 @@
 
 .button span {
   color: #fff;
+}
+
+.button.outlined {
+  background-color: transparent;
+  border: 1px solid var(--color-text-primary-color);
+}
+
+.button.outlined:hover span {
+  text-decoration: underline;
+}
+
+.button.outlined span {
+  color: var(--color-primary);
+}
+
+.button.text {
+  background-color: transparent;
+  color: var(--color-text-primary-color);
+}
+
+.button.text span {
+  color: var(--color-text-primary-color);
+}
+
+.button.text:hover span {
+  text-decoration: underline;
 }

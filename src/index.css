@@ -41,6 +41,7 @@ img {
   --color-01dp: light-dark(#edeff2, #1d2024);
 
   --color-text-primary: light-dark(#101012, #fff);
+  --color-text-primary-color: light-dark(#013d9e, #fff);
 
   --color-error: #ff0000;
 }

@@ -1,6 +1,6 @@
 {
   "Homepage": {
-    "title": "Bienvenido a GaIA React + TypeScript Template",
+    "title": "La bienvenida a GaIA React + TypeScript Template",
     "body": "Este es un modelo para un proyecto React + TypeScript con una configuración básica.",
     "buttons": {
       "logout": "Cerrar sesión",
@@ -8,7 +8,7 @@
     }
   },
   "Login": {
-    "title": "Bienvenido a GaIA",
+    "title": "La bienvenida a GaIA",
     "buttons": {
       "forgotPassword": "¿Olvidaste tu contraseña?",
       "login": "Entrar"

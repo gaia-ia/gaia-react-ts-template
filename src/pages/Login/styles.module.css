@@ -73,7 +73,6 @@
 }
 
 .input_container a span {
-  color: var(--color-text-primary) !important;
   text-decoration: underline;
 }
 
