@@ -25,7 +25,7 @@
 
 .link {
   text-decoration: underline;
-  color: var(--color-secondary-10);
+  color: var(--color-accent-700);
 }
 
 .small,

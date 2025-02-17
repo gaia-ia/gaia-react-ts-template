@@ -21,9 +21,9 @@ const Header = () => {
       <div className={styles.theme_changing}>
         <button onClick={toggleTheme}>
           {theme === 'light' ? (
-            <MoonIcon color="var(--color-text-primary)" height={24} />
+            <MoonIcon color="var(--color-text-950)" height={24} />
           ) : (
-            <SunIcon color="var(--color-text-primary)" height={24} />
+            <SunIcon color="var(--color-text-950)" height={24} />
           )}
         </button>
       </div>

@@ -1,5 +1,5 @@
 .button {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-500);
   border: none;
   padding: 8px 20px;
   border-radius: 4px;
@@ -10,16 +10,16 @@
 }
 
 .button:hover {
-  background-color: #0047ba;
+  background-color: var(--color-primary-600);
 }
 
 .button span {
-  color: #fff;
+  color: var(--color-fixed-white);
 }
 
 .button.outlined {
   background-color: transparent;
-  border: 1px solid var(--color-text-primary-color);
+  border: 1px solid var(--color-primary-950);
 }
 
 .button.outlined:hover span {
@@ -27,16 +27,16 @@
 }
 
 .button.outlined span {
-  color: var(--color-primary);
+  color: var(--color-primary-500);
 }
 
 .button.text {
   background-color: transparent;
-  color: var(--color-text-primary-color);
+  color: var(--color-primary-950);
 }
 
 .button.text span {
-  color: var(--color-text-primary-color);
+  color: var(--color-primary-950);
 }
 
 .button.text:hover span {

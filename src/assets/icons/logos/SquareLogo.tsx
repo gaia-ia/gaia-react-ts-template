@@ -2,7 +2,7 @@ import { SvgComponent } from '..';
 
 const SquareLogo: SvgComponent = ({
   size = '303',
-  color = 'var(--color-text-primary)',
+  color = 'var(--color-text-950)',
   className,
 }) => {
   return (

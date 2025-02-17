@@ -6,12 +6,12 @@
 }
 
 .label {
-  color: var(--color-text-primary);
+  color: var(--color-text-950);
 }
 
 .input_container {
   display: flex;
-  background-color: var(--color-01dp);
+  background-color: var(--color-background-100);
   border-radius: 4px;
 }
 
@@ -19,16 +19,16 @@
   background-color: transparent;
   border: none;
   outline: none;
-  color: var(--color-text-primary);
+  color: var(--color-text-950);
   width: 100%;
   padding: 8px 20px;
   font-size: 1rem;
 }
 
 .input_container:has(input:focus) {
-  border: 1px solid var(--color-primary);
+  border: 1px solid var(--color-primary-500);
 }
 
 .error {
-  color: var(--color-error);
+  color: var(--color-alert-error-500);
 }
