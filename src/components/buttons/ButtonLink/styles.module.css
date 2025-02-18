@@ -7,6 +7,9 @@
   transition: all 0.3s ease;
   width: 100%;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button:hover {
@@ -27,7 +30,7 @@
 }
 
 .button.outlined span {
-  color: var(--color-primary-500);
+  color: var(--color-primary-950);
 }
 
 .button.text {

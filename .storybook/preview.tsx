@@ -1,4 +1,5 @@
 import type { Preview, StoryFn } from '@storybook/react';
+import { themes } from '@storybook/theming';
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -12,13 +13,21 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    backgrounds: {
+      disable: true,
+    },
+    docs: {
+      theme: themes.dark,
+    },
   },
   decorators: [
     (Story: StoryFn) => {
       return (
-        <MemoryRouter>
-          <Story />
-        </MemoryRouter>
+        <div className="dark">
+          <MemoryRouter>
+            <Story />
+          </MemoryRouter>
+        </div>
       );
     },
   ],

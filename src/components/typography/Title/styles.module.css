@@ -1,28 +1,43 @@
-.title {
+.text {
   font-family: 'Source Code Pro', sans-serif;
   padding: 0;
   margin: 0;
 }
 
-.large {
-  font-size: 2rem;
-  font-weight: 700;
+.display {
+  font-size: 3rem;
 }
 
-.medium {
-  font-size: 1.75rem;
+.headline {
+  font-size: 2.25rem;
 }
 
-.small {
+.title {
   font-size: 1.5rem;
 }
 
-.tiny {
-  font-size: 1.125rem;
+.subheading-bold,
+.subheading {
+  font-size: 1.25rem;
 }
 
-.medium,
-.small,
-.tiny {
-  font-weight: 600;
+.subtitle {
+  font-size: 1rem;
+}
+
+.subtitle-small {
+  font-size: 0.875rem;
+}
+
+.display,
+.headline,
+.title,
+.subheading-bold,
+.subtitle,
+.subtitle-small {
+  font-weight: 700;
+}
+
+.subheading {
+  font-weight: 500;
 }

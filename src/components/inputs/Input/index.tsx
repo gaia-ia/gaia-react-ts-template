@@ -15,7 +15,7 @@ const Input: React.FC<InputProps> = ({ label, id, error, ...props }) => {
         <input id={id} {...props} />
       </div>
       {error && (
-        <Body variant="tiny" className={styles.error}>
+        <Body variant="small_body" className={styles.error}>
           {error}
         </Body>
       )}

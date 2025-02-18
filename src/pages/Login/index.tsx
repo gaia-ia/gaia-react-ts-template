@@ -62,7 +62,7 @@ const Login = () => {
             <IconSquareLogo size="100" />
           </div>
           <div className={styles.title}>
-            <Title variant="small">{t('Login.title')}</Title>
+            <Title variant="title">{t('Login.title')}</Title>
           </div>
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.input_container}>

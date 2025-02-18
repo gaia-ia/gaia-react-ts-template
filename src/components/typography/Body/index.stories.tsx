@@ -8,9 +8,20 @@ const meta: Meta<typeof Body> = {
   component: Body,
   argTypes: {
     variant: {
-      options: ['large', 'medium', 'small', 'tiny', 'link'],
+      options: [
+        'body',
+        'body_medium',
+        'body_bold',
+        'small_body',
+        'small_body_medium',
+        'small_body_bold',
+        'caption',
+        'caption_bold',
+        'button',
+        'link',
+      ],
       control: { type: 'radio' },
-      defaultValue: 'small',
+      defaultValue: 'body',
     },
     as: {
       options: ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'label'],
@@ -30,7 +41,7 @@ type Story = StoryObj<typeof Body>;
 export const Default: Story = {
   args: {
     children: 'Some text here',
-    variant: 'small',
+    variant: 'body',
     as: 'span',
   },
 };

@@ -7,13 +7,13 @@ const Body: React.FC<BodyProps> = ({
   children,
   className,
   as = 'span',
-  variant = 'small',
+  variant = 'body',
   ...props
 }) => {
   return createElement(
     as,
     {
-      className: `${styles.body} ${styles[variant]} ${className || ''}`,
+      className: `${styles.text} ${styles[variant]} ${className || ''}`,
       ...props,
     },
     children

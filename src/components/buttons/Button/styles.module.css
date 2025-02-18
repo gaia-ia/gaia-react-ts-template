@@ -41,3 +41,6 @@
 .button.text:hover span {
   text-decoration: underline;
 }
+
+.button.large {
+}
