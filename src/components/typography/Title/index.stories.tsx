@@ -8,9 +8,17 @@ const meta: Meta<typeof Title> = {
   component: Title,
   argTypes: {
     variant: {
-      options: ['large', 'medium', 'small', 'tiny'],
+      options: [
+        'display',
+        'headline',
+        'title',
+        'subheading-bold',
+        'subheading',
+        'subtitle',
+        'subtitle-small',
+      ],
       control: { type: 'radio' },
-      defaultValue: 'small',
+      defaultValue: 'title',
     },
     as: {
       options: ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'label'],
@@ -30,7 +38,7 @@ type Story = StoryObj<typeof Title>;
 export const Default: Story = {
   args: {
     children: 'Some text here',
-    variant: 'small',
+    variant: 'title',
     as: 'span',
   },
 };

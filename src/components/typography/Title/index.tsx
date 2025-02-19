@@ -7,13 +7,13 @@ const Title: React.FC<TitleProps> = ({
   children,
   className,
   as = 'span',
-  variant = 'large',
+  variant = 'title',
   ...props
 }) => {
   return createElement(
     as,
     {
-      className: `${styles.title} ${styles[variant]} ${className || ''}`,
+      className: `${styles.text} ${styles[variant]} ${className || ''}`,
       ...props,
     },
     children

@@ -1,4 +1,4 @@
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { Moon, Sun } from 'lucide-react';
 import { ThemeContext } from 'providers/ThemeProvider';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -21,9 +21,9 @@ const Header = () => {
       <div className={styles.theme_changing}>
         <button onClick={toggleTheme}>
           {theme === 'light' ? (
-            <MoonIcon color="var(--color-text-primary)" height={24} />
+            <Moon color="var(--color-text-950)" height={24} />
           ) : (
-            <SunIcon color="var(--color-text-primary)" height={24} />
+            <Sun color="var(--color-text-950)" height={24} />
           )}
         </button>
       </div>

@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: var(--color-00dp);
+  background-color: var(--color-background-50);
 }
 
 .login_container {
@@ -44,7 +44,7 @@
 }
 
 .title span {
-  color: var(--color-text-primary);
+  color: var(--color-text-950);
 }
 
 .title {
