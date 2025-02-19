@@ -3,4 +3,5 @@ export interface InputProps
   label?: string;
   id: string;
   error?: string;
+  hint?: string;
 }

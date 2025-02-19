@@ -7,6 +7,7 @@ export type BodyVariant =
   | 'small_body_bold'
   | 'caption'
   | 'caption_bold'
+  | 'label'
   | 'button'
   | 'link';
 

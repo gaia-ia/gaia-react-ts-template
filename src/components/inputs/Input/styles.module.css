@@ -6,13 +6,24 @@
 }
 
 .label {
-  color: var(--color-text-950);
+  color: var(--color-text-900);
+}
+
+.required {
+  margin-left: 4px;
+}
+
+.input_container_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .input_container {
   display: flex;
-  background-color: var(--color-background-100);
+  background-color: transparent;
   border-radius: 4px;
+  border: 1px solid var(--color-text-900);
 }
 
 .input_container input {
