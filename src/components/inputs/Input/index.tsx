@@ -1,4 +1,4 @@
-import Body from 'components/typography/Body';
+import Body from '@components/typography/Body';
 
 import styles from './styles.module.css';
 import { InputProps } from './types';

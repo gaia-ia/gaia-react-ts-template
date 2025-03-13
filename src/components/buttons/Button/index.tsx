@@ -1,7 +1,6 @@
+import Body from '@components/typography/Body';
+import { BodyVariant } from '@components/typography/Body/types';
 import React from 'react';
-
-import Body from 'components/typography/Body';
-import { BodyVariant } from 'components/typography/Body/types';
 
 import styles from './styles.module.css';
 import { ButtonProps } from './types';
