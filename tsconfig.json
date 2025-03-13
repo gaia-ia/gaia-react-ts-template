@@ -1,33 +1,42 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "baseUrl": "./src",
-    "paths": {
-      "@api/*": ["./api/*"],
-      "@assets/*": ["./assets/*"],
-      "@components": ["./components"],
-      "@libs/*": ["./libs/*"],
-      "@pages/*": ["./pages/*"],
-      "@providers": ["./providers"],
-      "@hooks": ["./hooks"],
-      "@translation/*": ["./translation/*"],
-      "@types/*": ["./types/*"],
-      "@utils/*": ["./utils/*"]
-    },
-    "allowJs": true,
+    "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "noFallthroughCasesInSwitch": true,
+    "jsx": "react-jsx",
+    "types": ["vite/client", "vite-plugin-svgr/client"],
+
+    "paths": {
+      "@api/*": ["./src/api/*"],
+      "@api": ["./src/api"],
+      "@assets/*": ["./src/assets/*"],
+      "@assets": ["./src/assets"],
+      "@components/*": ["./src/components/*"],
+      "@components": ["./src/components"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@hooks": ["./src/hooks"],
+      "@libs/*": ["./src/libs/*"],
+      "@libs": ["./src/libs"],
+      "@pages/*": ["./src/pages/*"],
+      "@pages": ["./src/pages"],
+      "@providers/*": ["./src/providers/*"],
+      "@providers": ["./src/providers"],
+      "@translation/*": ["./src/translation/*"],
+      "@translation": ["./src/translation"],
+      "@utils/*": ["./src/utils/*"],
+      "@utils": ["./src/utils"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src"]
 }

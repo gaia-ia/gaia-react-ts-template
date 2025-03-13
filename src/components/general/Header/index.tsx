@@ -1,9 +1,8 @@
+import Button from '@components/buttons/Button';
+import { ThemeContext } from '@providers//ThemeProvider';
 import { Moon, Sun } from 'lucide-react';
-import { ThemeContext } from 'providers/ThemeProvider';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import Button from 'components/buttons/Button';
 
 import styles from './styles.module.css';
 

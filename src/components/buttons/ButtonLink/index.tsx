@@ -1,6 +1,5 @@
+import Body from '@components/typography/Body';
 import { Link } from 'react-router-dom';
-
-import Body from 'components/typography/Body';
 
 import styles from './styles.module.css';
 import { ButtonLinkProps } from './types';
