@@ -1,0 +1,20 @@
+# This is a basic workflow to help you get started with Actions
+name: front-linter
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '23.8'
+      - name: install
+        run: yarn
+      - name: ESLint
+        run: yarn lint

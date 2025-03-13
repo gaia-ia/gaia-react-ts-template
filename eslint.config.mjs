@@ -18,6 +18,7 @@ export default [
     rules: {
       eqeqeq: 'off',
       'no-unused-vars': 'error',
+      'no-console': 'error',
     },
   },
   pluginJs.configs.recommended,
