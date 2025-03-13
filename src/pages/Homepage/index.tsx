@@ -15,6 +15,7 @@ const Homepage = () => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line no-console
     if (data) console.log(data.slip.advice);
   }, [data]);
 
