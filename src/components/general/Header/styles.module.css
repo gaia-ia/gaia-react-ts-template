@@ -25,5 +25,8 @@
 .language_changing {
   display: flex;
   align-items: center;
-  color: var(--color-text-950);
+}
+
+.language_changing span {
+  color: var(--color-text-950) !important;
 }

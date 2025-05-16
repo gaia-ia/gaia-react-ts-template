@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Cookie, Croissant, Pizza } from 'lucide-react';
 
 import ButtonLink from '.';
 
@@ -22,18 +23,32 @@ const meta: Meta<typeof ButtonLink> = {
       description: 'The link to navigate to',
     },
     variant: {
-      control: {
-        type: 'select',
-        options: ['primary', 'outlined', 'text'],
-      },
+      options: ['primary', 'secondary', 'outlined', 'text'],
+      control: { type: 'radio' },
       defaultValue: 'primary',
     },
-    target: {
-      control: {
-        type: 'select',
-        options: ['_blank', '_self', '_parent', '_top'],
+    size: {
+      options: ['extra_large', 'large', 'small'],
+      control: { type: 'radio' },
+      defaultValue: 'large',
+    },
+    icon: {
+      options: ['Sem Ícone', 'Pizza', 'Cookie', 'Croissant'],
+      mapping: {
+        'Sem Ícone': undefined,
+        Pizza: Pizza,
+        Cookie: Cookie,
+        Croissant: Croissant,
       },
-      defaultValue: '_blank',
+      control: { type: 'radio' },
+      defaultValue: undefined,
+      description:
+        'Icon to be displayed on the left or right side of the button, the icon can be any Lucide icon',
+    },
+    iconPosition: {
+      options: ['left', 'right'],
+      control: { type: 'radio' },
+      defaultValue: 'left',
     },
   },
 };
@@ -45,24 +60,6 @@ export const Primary: Story = {
   args: {
     children: 'Click me',
     variant: 'primary',
-    to: 'https://gaia.dev',
-    target: '_blank',
-  },
-};
-
-export const Outlined: Story = {
-  args: {
-    children: 'Click me',
-    variant: 'outlined',
-    to: 'https://gaia.dev',
-    target: '_blank',
-  },
-};
-
-export const Text: Story = {
-  args: {
-    children: 'Click me',
-    variant: 'text',
     to: 'https://gaia.dev',
     target: '_blank',
   },

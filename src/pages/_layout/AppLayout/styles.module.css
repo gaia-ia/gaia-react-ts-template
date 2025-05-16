@@ -1,0 +1,15 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--color-background-100);
+}
+
+.main {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  border-bottom-left-radius: 32px;
+  border-top-left-radius: 32px;
+  background-color: var(--color-background-50);
+}

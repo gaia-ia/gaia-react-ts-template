@@ -1,5 +1,7 @@
 import ReactQueryProvider from './ReactQueryProvider';
 import ThemeProvider from './ThemeProvider';
+import { ToastProvider } from './ToastProvider';
+import UserDataProvider from './UserDataProvider';
 
 type Props = {
   children: React.ReactNode;
@@ -8,7 +10,11 @@ type Props = {
 const CoreProvider: React.FC<Props> = ({ children }) => {
   return (
     <ThemeProvider>
-      <ReactQueryProvider>{children}</ReactQueryProvider>
+      <ToastProvider>
+        <ReactQueryProvider>
+          <UserDataProvider>{children}</UserDataProvider>
+        </ReactQueryProvider>
+      </ToastProvider>
     </ThemeProvider>
   );
 };

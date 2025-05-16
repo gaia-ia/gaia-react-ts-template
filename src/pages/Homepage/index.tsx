@@ -1,23 +1,15 @@
-import { useGetAdvice } from '@api/advice';
 import SquareLogo from '@assets/icons/logos/SquareLogo';
 import { Body, ButtonLink, Title } from '@components';
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import styles from './styles.module.css';
 
-const Homepage = () => {
+const Dashboard = () => {
   const { t } = useTranslation();
-  const { data } = useGetAdvice();
 
   const logout = () => {
     window.localStorage.removeItem('token');
   };
-
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    if (data) console.log(data.slip.advice);
-  }, [data]);
 
   return (
     <div className={styles.container}>
@@ -35,4 +27,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default Dashboard;
