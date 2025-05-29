@@ -9,7 +9,7 @@ const meta: Meta<typeof Button> = {
   tags: ['autodocs'],
   argTypes: {
     variant: {
-      options: ['primary', 'secondary', 'outlined', 'text'],
+      options: ['primary', 'secondary', 'outlined', 'text', 'icon'],
       control: { type: 'radio' },
       defaultValue: 'primary',
     },
@@ -35,6 +35,10 @@ const meta: Meta<typeof Button> = {
       defaultValue: undefined,
       description:
         'Icon to be displayed on the left or right side of the button, the icon can be any Lucide icon',
+    },
+    disabled: {
+      control: { type: 'boolean' },
+      defaultValue: false,
     },
     iconPosition: {
       options: ['left', 'right'],

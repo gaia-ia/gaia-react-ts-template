@@ -20,7 +20,7 @@ const Input: React.FC<InputProps> = ({
         </Body>
       )}
       <div className={styles.input_container_wrapper}>
-        <div className={styles.input_container}>
+        <div className={styles.input_container} data-input-container>
           <input id={id} {...props} />
         </div>
         {hint && (

@@ -1,98 +1,42 @@
+import { useGetUserInfo } from '@api/users';
 import { IconSquareLogo } from '@assets/icons';
-import { Button, ButtonLink, Input, Title } from '@components';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { z } from 'zod';
+import { env } from '@utils/env';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
+import ForgetPassword from './ForgetPassword';
+import LoginForm from './LoginForm';
+import ResetPassword from './ResetPassword';
 import styles from './styles.module.css';
 
-const Login = () => {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
+const Login: React.FC = () => {
+  const token = localStorage.getItem('token');
+  const { data, isLoading } = useGetUserInfo(token);
 
-  const schema = z.object({
-    email: z
-      .string()
-      .nonempty(t('errors.required', { input: t('inputs.email.label') }))
-      .email(
-        t('errors.invalidFormat', {
-          input: t('inputs.email.label'),
-        })
-      )
-      .refine(
-        email => email === 'admin@gaia.dev',
-        t('errors.invalidInput', {
-          input: t('inputs.email.label'),
-        })
-      ),
-    password: z
-      .string()
-      .nonempty(t('errors.required', { input: t('inputs.password.label') }))
-      .refine(
-        password => password === 'admin',
-        t('errors.invalidInput', {
-          input: t('inputs.password.label'),
-        })
-      ),
-  });
+  if (isLoading) return <></>;
 
-  type ILoginForm = z.infer<typeof schema>;
+  if (data) return <Navigate to="/" replace />;
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ILoginForm>({
-    resolver: zodResolver(schema),
-  });
-
-  const onSubmit: SubmitHandler<ILoginForm> = () => {
-    window.localStorage.setItem('token', '123');
-    navigate('/');
-  };
+  window.location.href = `${env.VITE_GAIA_APP_URL}/login`;
 
   return (
     <div className={styles.container}>
-      <div className={styles.left_side} />
-      <div className={styles.right_side}>
-        <div className={styles.login_container}>
-          <div className={styles.logo}>
-            <IconSquareLogo size="100" />
-          </div>
-          <div className={styles.title}>
-            <Title variant="title">{t('Login.title')}</Title>
-          </div>
-          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-            <div className={styles.input_container}>
-              <Input
-                {...register('email', {
-                  required: true,
-                })}
-                id="email"
-                type="email"
-                placeholder={t('inputs.email.placeholder')}
-                error={errors.email?.message}
-              />
-
-              <Input
-                {...register('password', {
-                  required: true,
-                })}
-                id="password"
-                type="password"
-                placeholder={t('inputs.password.placeholder')}
-                error={errors.password?.message}
-              />
-
-              <ButtonLink to="#" variant="text">
-                {t('Login.buttons.forgotPassword')}
-              </ButtonLink>
-            </div>
-            <Button type="submit">{t('Login.buttons.login')}</Button>
-          </form>
+      <div className={styles.left_side}>
+        <div className={styles.logo}>
+          <IconSquareLogo size="200" />
         </div>
+        <video
+          src="https://storage.googleapis.com/gaia-internal-assets/macha_gaia.mov"
+          autoPlay
+          loop
+          muted
+        />
+      </div>
+      <div className={styles.right_side}>
+        <Routes>
+          <Route path="/" element={<LoginForm />} />
+          <Route path="forget" element={<ForgetPassword />} />
+          <Route path="reset" element={<ResetPassword />} />
+        </Routes>
       </div>
     </div>
   );

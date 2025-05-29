@@ -1,18 +1,25 @@
-import React, { ReactElement } from 'react';
-import { Navigate } from 'react-router-dom';
+import { UserDataContext } from '@providers/UserDataProvider';
+import { env } from '@utils/env';
+import { useContext, useEffect } from 'react';
 
 type ProtectedRouteProps = {
-  children: ReactElement;
+  children: React.ReactElement;
 };
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const login = window.localStorage.getItem('token');
+  const { loggedIn, loading } = useContext(UserDataContext);
 
-  if (login) {
-    return children;
-  } else {
-    return <Navigate to="/login" />;
+  useEffect(() => {
+    if (!loading && loggedIn === false) {
+      window.location.href = `${env.VITE_GAIA_APP_URL}/logout`;
+    }
+  }, [loading, loggedIn]);
+
+  if (loading || loggedIn === null) {
+    return <div></div>;
   }
+
+  return children;
 };
 
 export default ProtectedRoute;

@@ -1,3 +1,3 @@
 // exports
 
-export { default as useFetch } from './useFetch';
+export { useMutationFetch, useQueryFetch } from './useFetch';

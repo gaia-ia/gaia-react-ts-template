@@ -12,7 +12,7 @@ export type BodyVariant =
   | 'link';
 
 export interface BodyProps extends React.HTMLAttributes<HTMLSpanElement> {
-  as?: 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label';
+  as?: 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' | 'text';
   variant?: BodyVariant;
   htmlFor?: string;
 }
