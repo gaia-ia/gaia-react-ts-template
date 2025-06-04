@@ -1,4 +1,4 @@
-import { Sidebar } from '@components/index';
+import { Sidebar } from '@components';
 import { UserDataContext } from '@providers/UserDataProvider';
 import { Folder } from 'lucide-react';
 import React, { useContext } from 'react';

@@ -1,9 +1,9 @@
+import '@gaia-dev/theme/index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './App';
 import { bootstrapAuth } from './bootstrap';
-import './index.css';
 
 bootstrapAuth();
 

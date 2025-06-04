@@ -1,5 +1,5 @@
 import { usePostLogin } from '@api/auth';
-import { Button, ButtonLink, Input, Title } from '@components';
+import { Button, ButtonLink, Input, Title } from '@gaia-dev/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ToastContext } from '@providers/ToastProvider';
 import { ChevronRight } from 'lucide-react';

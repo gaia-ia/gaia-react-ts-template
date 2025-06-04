@@ -1,4 +1,4 @@
-import Button from '@components/buttons/Button';
+import { Button } from '@gaia-dev/ui';
 import { ThemeContext } from '@providers/ThemeProvider';
 import { Moon, Sun } from 'lucide-react';
 import { useContext } from 'react';

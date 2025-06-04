@@ -8,6 +8,7 @@ export type Link = {
 
 export interface LinkProps extends Link {
   isCollapsed: boolean;
+  onClick?: () => void;
 }
 
 export type SidebarProps = {

@@ -1,17 +1,15 @@
 import LongLogo from '@assets/icons/logos/LongLogo';
 import ShortLogo from '@assets/icons/logos/ShortLogo';
-import Button from '@components/buttons/Button';
-import Body from '@components/typography/Body';
-import { ChevronsLeft, ChevronsRight, LogOut } from 'lucide-react';
+import { Body, Button, Divider, Tooltip } from '@gaia-dev/ui';
+import { useWindowSize } from '@hooks';
+import { ChevronsLeft, ChevronsRight, LogOut, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import Divider from '../Divider';
-import Tooltip from '../Tooltip';
 import styles from './styles.module.css';
 import { type LinkProps, SidebarProps } from './types';
 
-const Link = ({ icon, title, to, isCollapsed }: LinkProps) => {
+const Link = ({ icon, title, to, isCollapsed, onClick }: LinkProps) => {
   const LucideIcon = icon;
   const id = `${to.replaceAll('/', '')}`;
 
@@ -24,6 +22,7 @@ const Link = ({ icon, title, to, isCollapsed }: LinkProps) => {
           `${styles.nav_link} ${isActive && styles.active} ${isCollapsed && styles.collapsed}`
         }
         title={isCollapsed ? title : undefined}
+        onClick={onClick}
       >
         <LucideIcon size={24} />
         {!isCollapsed && <Body>{title}</Body>}
@@ -46,12 +45,24 @@ const Sidebar = ({
   defaultLinks,
   handleLogout,
 }: SidebarProps) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const { width } = useWindowSize();
+  const [isCollapsed, setIsCollapsed] = useState(
+    width && width < 700 ? false : true
+  );
   const hasAdminLinks = adminLinks && adminLinks.length > 0;
 
   const handleCollapsed = () => {
     setIsCollapsed(prev => !prev);
   };
+
+  const MenuIcon =
+    width && width < 700
+      ? isCollapsed
+        ? Menu
+        : X
+      : isCollapsed
+        ? ChevronsRight
+        : ChevronsLeft;
 
   return (
     <aside
@@ -61,40 +72,58 @@ const Sidebar = ({
         <div
           className={`${styles.logo_container} ${isCollapsed && styles.collapsed}`}
         >
-          {isCollapsed ? <ShortLogo /> : <LongLogo />}
+          {isCollapsed && width && width > 700 ? <ShortLogo /> : <LongLogo />}
 
           <Button
             className={styles.collapse_button}
             variant="icon"
-            icon={isCollapsed ? ChevronsRight : ChevronsLeft}
+            icon={MenuIcon}
             onClick={handleCollapsed}
           />
         </div>
 
-        <nav className={styles.navigation}>
-          {defaultLinks.map(link => (
-            <Link key={link.to} isCollapsed={isCollapsed} {...link} />
-          ))}
-
-          {hasAdminLinks && <Divider color="var(--color-accent-300)" />}
-
-          {adminLinks?.map(link => (
-            <Link key={link.to} isCollapsed={isCollapsed} {...link} />
-          ))}
-        </nav>
-      </div>
-
-      <footer className={styles.footer}>
-        <Button
-          variant="secondary"
-          className={`${styles.logout_button} ${isCollapsed && styles.collapsed}`}
-          iconPosition="right"
-          icon={LogOut}
-          onClick={handleLogout}
+        <div
+          className={`${styles.navigation_container} ${isCollapsed && styles.collapsed}`}
         >
-          <Body>{user?.full_name || ''}</Body>
-        </Button>
-      </footer>
+          <nav className={styles.navigation}>
+            {defaultLinks.map(link => (
+              <Link
+                key={link.to}
+                isCollapsed={isCollapsed}
+                onClick={() => {
+                  if (width && width < 700) setIsCollapsed(true);
+                }}
+                {...link}
+              />
+            ))}
+
+            {hasAdminLinks && <Divider color="var(--color-accent-300)" />}
+
+            {adminLinks?.map(link => (
+              <Link
+                key={link.to}
+                isCollapsed={isCollapsed}
+                onClick={() => {
+                  if (width && width < 700) setIsCollapsed(true);
+                }}
+                {...link}
+              />
+            ))}
+          </nav>
+
+          <footer className={styles.footer}>
+            <Button
+              variant="secondary"
+              className={`${styles.logout_button} ${isCollapsed && styles.collapsed}`}
+              iconPosition="right"
+              icon={LogOut}
+              onClick={handleLogout}
+            >
+              <Body>{user?.full_name || ''}</Body>
+            </Button>
+          </footer>
+        </div>
+      </div>
     </aside>
   );
 };

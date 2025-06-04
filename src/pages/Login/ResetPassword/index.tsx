@@ -1,5 +1,5 @@
 import { usePostResetPassword } from '@api/auth';
-import { Body, Button, Input, Title } from '@components';
+import { Body, Button, Input, Title } from '@gaia-dev/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ToastContext } from '@providers/ToastProvider';
 import { ChevronRight, Lock } from 'lucide-react';
