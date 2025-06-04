@@ -3,6 +3,11 @@
   height: 100vh;
   width: 100%;
   background-color: var(--color-background-100);
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    overflow-y: auto;
+  }
 }
 
 .main {
@@ -12,4 +17,9 @@
   border-bottom-left-radius: 32px;
   border-top-left-radius: 32px;
   background-color: var(--color-background-50);
+
+  @media (max-width: 700px) {
+    border-radius: 20px 20px 0 0;
+    overflow-y: unset;
+  }
 }

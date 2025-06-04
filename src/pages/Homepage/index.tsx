@@ -1,5 +1,5 @@
 import SquareLogo from '@assets/icons/logos/SquareLogo';
-import { Body, ButtonLink, Title } from '@components';
+import { Body, ButtonLink, Title } from '@gaia-dev/ui';
 import { useTranslation } from 'react-i18next';
 
 import styles from './styles.module.css';
