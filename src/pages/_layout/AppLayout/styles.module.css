@@ -8,6 +8,10 @@
     flex-direction: column;
     overflow-y: auto;
   }
+
+  @media (min-width: 700px) {
+    background-color: var(--color-background-50);
+  }
 }
 
 .main {
