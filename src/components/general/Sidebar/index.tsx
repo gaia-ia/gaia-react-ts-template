@@ -1,9 +1,10 @@
 import LongLogo from '@assets/icons/logos/LongLogo';
 import ShortLogo from '@assets/icons/logos/ShortLogo';
-import { Body, Button, Divider, Tooltip } from '@gaia-dev/ui';
+import { Body, Button, Divider, Select, Tooltip } from '@gaia-dev/ui';
 import { useWindowSize } from '@hooks';
 import { ChevronsLeft, ChevronsRight, LogOut, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 import styles from './styles.module.css';
@@ -45,15 +46,22 @@ const Sidebar = ({
   defaultLinks,
   handleLogout,
 }: SidebarProps) => {
+  const { i18n } = useTranslation();
   const { width } = useWindowSize();
   const [isCollapsed, setIsCollapsed] = useState(
     width && width < 700 ? false : true
   );
   const hasAdminLinks = adminLinks && adminLinks.length > 0;
+  const [lang, setLang] = useState<string>(i18n.language.split('-')[0]);
+  const { t } = useTranslation();
 
   const handleCollapsed = () => {
     setIsCollapsed(prev => !prev);
   };
+
+  useEffect(() => {
+    i18n.changeLanguage(lang);
+  }, [lang]);
 
   const MenuIcon =
     width && width < 700
@@ -97,7 +105,7 @@ const Sidebar = ({
               />
             ))}
 
-            {hasAdminLinks && <Divider color="var(--color-accent-300)" />}
+            {hasAdminLinks && <Divider color="var(--color-primary-400)" />}
 
             {adminLinks?.map(link => (
               <Link
@@ -112,15 +120,33 @@ const Sidebar = ({
           </nav>
 
           <footer className={styles.footer}>
+            <Select
+              id="language"
+              options={[
+                { label: '🇧🇷', value: 'pt' },
+                { label: '🇺🇸', value: 'en' },
+                { label: '🇪🇸', value: 'es' },
+              ]}
+              value={lang}
+              onChange={value => setLang(value as string)}
+            />
+
             <Button
-              variant="secondary"
+              variant="primary"
               className={`${styles.logout_button} ${isCollapsed && styles.collapsed}`}
               iconPosition="right"
               icon={LogOut}
               onClick={handleLogout}
+              id="logout"
             >
               <Body>{user?.full_name || ''}</Body>
             </Button>
+            <Tooltip
+              text={t('commom:buttons.logout')}
+              anchorSelect="#logout"
+              color="var(--color-background-300)"
+              place="right"
+            />
           </footer>
         </div>
       </div>
