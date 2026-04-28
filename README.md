@@ -113,7 +113,7 @@ git push -u origin main
 Once your repository is set up, install the required dependencies:
 
 ```sh
-yarn
+pnpm install
 ```
 
 ### 3. Start the Development Server
@@ -121,7 +121,7 @@ yarn
 Run the following command to launch the development server:
 
 ```sh
-yarn start
+pnpm start
 ```
 
 This starts a local server and opens your application in the browser.
@@ -131,7 +131,7 @@ This starts a local server and opens your application in the browser.
 To generate an optimized production build, run:
 
 ```sh
-yarn build
+pnpm build
 ```
 
 This creates a `build/` folder with compiled files ready for deployment.

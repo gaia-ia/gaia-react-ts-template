@@ -13,7 +13,10 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '23.8'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
       - name: install
-        run: yarn
+        run: pnpm install
       - name: ESLint
-        run: yarn lint
+        run: pnpm lint

@@ -29,7 +29,7 @@
     "react-router-dom": "^7.6.0",
     "react-toastify": "^11.0.5",
     "react-tooltip": "^5.28.1",
-    "typescript": "^4.4.2",
+    "typescript": "^6.0.3",
     "vite": "^6.2.1",
     "vite-plugin-svgr": "^4.3.0",
     "vite-tsconfig-paths": "^5.1.4",
@@ -63,6 +63,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "packageManager": "pnpm@10.12.3",
+  "pnpm": {
+    "onlyBuiltDependencies": ["@swc/core", "esbuild"]
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
