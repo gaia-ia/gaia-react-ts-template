@@ -15,11 +15,8 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.21.0",
-    "@typescript-eslint/parser": "^8.21.0",
     "@vitejs/plugin-react-swc": "^3.8.0",
     "axios": "^1.7.9",
-    "eslint": "^9.18.0",
     "i18next": "^23.6.0",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",
@@ -40,17 +37,11 @@
     "start": "vite --port 3002",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx,json}'",
-    "format": "prettier --ignore-path .gitignore --write .",
+    "lint": "biome lint ./src && eslint 'src/**/*.{ts,tsx}'",
+    "format": "biome format --write ./src",
+    "check": "biome check --write ./src",
     "storybook": "storybook dev -p 6006 ./public",
     "build-storybook": "storybook build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "plugin:storybook/recommended"
-    ]
   },
   "browserslist": {
     "production": [
@@ -66,11 +57,14 @@
   },
   "packageManager": "pnpm@10.12.3",
   "pnpm": {
-    "onlyBuiltDependencies": ["@swc/core", "esbuild"]
+    "onlyBuiltDependencies": [
+      "@swc/core",
+      "esbuild"
+    ]
   },
   "devDependencies": {
+    "@biomejs/biome": "2.4.13",
     "@chromatic-com/storybook": "^3.2.4",
-    "@eslint/js": "^9.18.0",
     "@storybook/addon-essentials": "^8.6.4",
     "@storybook/addon-interactions": "^8.6.4",
     "@storybook/addon-onboarding": "^8.6.4",
@@ -81,15 +75,10 @@
     "@storybook/test": "^8.6.4",
     "@storybook/theming": "^8.5.6",
     "@tanstack/eslint-plugin-query": "^5.64.2",
-    "@trivago/prettier-plugin-sort-imports": "^5.2.1",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-storybook": "^0.11.2",
-    "globals": "^15.14.0",
-    "prettier": "^3.4.2",
+    "eslint": "^10.2.1",
     "prop-types": "^15.8.1",
     "storybook": "^8.6.4",
-    "typescript-eslint": "^8.21.0",
+    "typescript-eslint": "^8.59.1",
     "webpack": "^5.97.1"
   }
 }

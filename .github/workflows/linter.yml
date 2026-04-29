@@ -1,4 +1,4 @@
-name: ESLint
+name: Lint
 on:
   push:
     branches: ['main']
@@ -9,8 +9,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '23.8'
       - uses: pnpm/action-setup@v4
@@ -18,5 +18,7 @@ jobs:
           version: 10
       - name: install
         run: pnpm install
-      - name: ESLint
-        run: pnpm lint
+      - name: Biome check
+        run: pnpm exec biome ci ./src
+      - name: ESLint (TanStack Query rules)
+        run: pnpm exec eslint 'src/**/*.{ts,tsx}'
