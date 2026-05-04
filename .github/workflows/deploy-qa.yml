@@ -1,0 +1,70 @@
+name: Deploy React to GCP - QA
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - qa
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    if: (github.event.pull_request.merged == true) || github.event_name == 'workflow_dispatch'
+    
+    concurrency:
+      group: deploy-qa-${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '23.8'
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: pnpm-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: pnpm-${{ runner.os }}-
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # --- GCP Deploy (uncomment when ready) ---
+      # - name: Create .env file
+      #   run: |
+      #     echo "VITE_API_URL=${{ secrets.QA_VITE_API_URL }}" > .env
+      #     echo "VITE_GAIA_APP_URL=${{ secrets.QA_VITE_GAIA_APP_URL }}" >> .env
+      #     echo "VITE_CRIA_APP_URL=${{ secrets.QA_VITE_CRIA_APP_URL }}" >> .env
+      #     echo "VITE_BRANDSYNC_APP_URL=${{ secrets.QA_VITE_BRANDSYNC_APP_URL }}" >> .env
+      #     echo "VITE_COPIA_APP_URL=${{ secrets.QA_VITE_COPIA_APP_URL }}" >> .env
+      #     echo "VITE_CVC_DASHBOARD_APP_URL=${{ secrets.QA_VITE_CVC_DASHBOARD_APP_URL }}" >> .env
+      #     echo "VITE_SENTRY_DSN=${{ secrets.QA_VITE_SENTRY_DSN }}" >> .env
+      #     echo "VITE_IS_SENTRY_ENABLED=${{ secrets.QA_VITE_IS_SENTRY_ENABLED }}" >> .env
+
+      # - name: Build
+      #   run: pnpm build
+
+      # - name: Authenticate with GCP
+      #   uses: google-github-actions/auth@v1
+      #   with:
+      #     credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
+
+      # - name: Deploy to Cloud Storage
+      #   run: cd dist && gcloud storage cp --recursive . gs://${{ secrets.GCP_QA_BUCKET }}
+
+      # - name: Invalidate CDN cache
+      #   run: gcloud compute url-maps invalidate-cdn-cache ${{ secrets.GCP_QA_URL_MAP }} --path "/*" --async
