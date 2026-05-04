@@ -1,7 +1,7 @@
 import Login from '@pages/Login';
 import AppLayout from '@pages/_layout/AppLayout';
 import ProtectedRoute from '@utils/ProtectedRoute';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 
 const AppRoutes = () => {
   const protectedRoutes = [

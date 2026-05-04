@@ -374,7 +374,7 @@ Application routes are managed in `Routes.tsx`. When a page has child pages, its
 import Homepage from '@pages/Homepage';
 import Login from '@pages/Login';
 import ProtectedRoute from '@utils/ProtectedRoute';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router';
 
 const AppRoutes = () => {
   const protectedRoutes = [

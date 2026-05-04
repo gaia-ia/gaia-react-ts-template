@@ -6,7 +6,7 @@ import { ChevronRight, Lock } from 'lucide-react';
 import { useContext, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router';
 import { z } from 'zod';
 
 import styles from './styles.module.css';

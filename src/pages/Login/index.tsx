@@ -1,7 +1,7 @@
 import { useGetUserInfo } from '@api/users';
 import { IconSquareLogo } from '@assets/icons';
 import { env } from '@utils/env';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router';
 
 import ForgetPassword from './ForgetPassword';
 import LoginForm from './LoginForm';

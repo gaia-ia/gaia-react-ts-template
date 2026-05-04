@@ -5,7 +5,7 @@ import { useWindowSize } from '@hooks';
 import { ChevronsLeft, ChevronsRight, LogOut, Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router';
 
 import styles from './styles.module.css';
 import { type LinkProps, SidebarProps } from './types';
