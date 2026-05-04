@@ -1,10 +1,10 @@
 import SquareLogo from '@assets/icons/logos/SquareLogo';
 import { Body, Button, Title } from '@gaia-dev/ui';
+import { UserDataContext } from '@providers/UserDataProvider';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import styles from './styles.module.css';
-import { UserDataContext } from '@providers/UserDataProvider';
-import { useContext } from 'react';
 
 const Homepage = () => {
   const { t } = useTranslation();
