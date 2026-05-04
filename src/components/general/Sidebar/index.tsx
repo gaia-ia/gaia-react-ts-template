@@ -48,9 +48,7 @@ const Sidebar = ({
 }: SidebarProps) => {
   const { i18n } = useTranslation();
   const { width } = useWindowSize();
-  const [isCollapsed, setIsCollapsed] = useState(
-    width && width < 700 ? false : true
-  );
+  const [isCollapsed, setIsCollapsed] = useState(!(width && width < 700));
   const hasAdminLinks = adminLinks && adminLinks.length > 0;
   const [lang, setLang] = useState<string>(i18n.language.split('-')[0]);
   const { t } = useTranslation();
@@ -80,7 +78,11 @@ const Sidebar = ({
         <div
           className={`${styles.logo_container} ${isCollapsed && styles.collapsed}`}
         >
-          {isCollapsed && width && width > 700 ? <ShortLogo /> : <LongLogo />}
+          {isCollapsed && width && width > 700 ? (
+            <ShortLogo title="Gaia" />
+          ) : (
+            <LongLogo title="Gaia" />
+          )}
 
           <Button
             className={styles.collapse_button}

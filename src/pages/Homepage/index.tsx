@@ -12,7 +12,7 @@ const Homepage = () => {
 
   return (
     <div className={styles.container}>
-      <SquareLogo size="100" />
+      <SquareLogo title="Gaia" size="100" />
 
       <Title>{t('Homepage.title')}</Title>
       <Body>{t('Homepage.body')}</Body>

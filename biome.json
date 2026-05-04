@@ -9,7 +9,10 @@
     "rules": {
       "recommended": true,
       "suspicious": { "noConsole": "error" },
-      "correctness": { "noUnusedVariables": "error" }
+      "correctness": { "noUnusedVariables": "error" },
+      "style": {
+        "noJsxLiterals": "error"
+      }
     }
   },
   "formatter": {
