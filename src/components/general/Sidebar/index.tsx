@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
 
 import styles from './styles.module.css';
-import { type LinkProps, SidebarProps } from './types';
+import type { LinkProps, SidebarProps } from './types';
 
 const Link = ({ icon, title, to, isCollapsed, onClick }: LinkProps) => {
   const LucideIcon = icon;
@@ -61,7 +61,7 @@ const Sidebar = ({
 
   useEffect(() => {
     i18n.changeLanguage(lang);
-  }, [lang]);
+  }, [lang, i18n]);
 
   const MenuIcon =
     width && width < 700
@@ -84,10 +84,12 @@ const Sidebar = ({
 
           <Button
             className={styles.collapse_button}
-            variant="icon"
-            icon={MenuIcon}
+            size="icon-sm"
+            variant="ghost"
             onClick={handleCollapsed}
-          />
+          >
+            <MenuIcon />
+          </Button>
         </div>
 
         <div
@@ -132,14 +134,13 @@ const Sidebar = ({
             />
 
             <Button
-              variant="primary"
+              variant="secondary"
               className={`${styles.logout_button} ${isCollapsed && styles.collapsed}`}
-              iconPosition="right"
-              icon={LogOut}
               onClick={handleLogout}
               id="logout"
             >
               <Body>{user?.full_name || ''}</Body>
+              <LogOut size={24} />
             </Button>
             <Tooltip
               text={t('commom:buttons.logout')}

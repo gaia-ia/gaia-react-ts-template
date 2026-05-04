@@ -7,13 +7,6 @@
       "changeLanguage": "Cambiar idioma"
     }
   },
-  "Login": {
-    "title": "La bienvenida a GaIA",
-    "buttons": {
-      "forgotPassword": "¿Olvidaste tu contraseña?",
-      "login": "Entrar"
-    }
-  },
   "inputs": {
     "email": {
       "placeholder": "Email",

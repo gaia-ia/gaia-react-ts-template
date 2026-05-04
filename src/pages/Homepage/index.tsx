@@ -1,15 +1,14 @@
 import SquareLogo from '@assets/icons/logos/SquareLogo';
-import { Body, ButtonLink, Title } from '@gaia-dev/ui';
+import { Body, Button, Title } from '@gaia-dev/ui';
 import { useTranslation } from 'react-i18next';
 
 import styles from './styles.module.css';
+import { UserDataContext } from '@providers/UserDataProvider';
+import { useContext } from 'react';
 
-const Dashboard = () => {
+const Homepage = () => {
   const { t } = useTranslation();
-
-  const logout = () => {
-    window.localStorage.removeItem('token');
-  };
+  const { logout } = useContext(UserDataContext);
 
   return (
     <div className={styles.container}>
@@ -19,12 +18,12 @@ const Dashboard = () => {
       <Body>{t('Homepage.body')}</Body>
 
       <div className={styles.buttons}>
-        <ButtonLink className={styles.button} onClick={logout} to="/login">
+        <Button className={styles.button} onClick={logout}>
           {t('Homepage.buttons.logout')}
-        </ButtonLink>
+        </Button>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default Homepage;
