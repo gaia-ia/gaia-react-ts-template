@@ -30,7 +30,6 @@ const bypassAuth = import.meta.env.VITE_DEV_BYPASS_AUTH === 'true';
 const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-
   const [token, setToken] = useState<string | null>(null);
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
   const [tokenLoaded, setTokenLoaded] = useState(false);
@@ -51,7 +50,7 @@ const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   const { data, isLoading, error } = useGetUserInfo(
-    !bypassAuth && tokenLoaded ? token : null,
+    !bypassAuth && tokenLoaded ? token : null
   );
 
   useEffect(() => {
