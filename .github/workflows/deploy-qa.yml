@@ -26,6 +26,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Validate dev flags are disabled for QA
+        env:
+          QA_VITE_DEV_BYPASS_AUTH: ${{ secrets.QA_VITE_DEV_BYPASS_AUTH }}
+        run: |
+          if [ "$QA_VITE_DEV_BYPASS_AUTH" = "true" ]; then
+            echo "::error::VITE_DEV_BYPASS_AUTH must not be 'true' in QA. Update the QA_VITE_DEV_BYPASS_AUTH secret before deploying."
+            exit 1
+          fi
+
       - uses: actions/setup-node@v4
         with:
           node-version: '23.8'

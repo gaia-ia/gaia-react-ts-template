@@ -104,6 +104,27 @@ The template app receives the token as a `?token=` URL query parameter — the G
 
 Without a valid token in the URL or localStorage, the `ProtectedRoute` guard will redirect the user back to the Gaia app login page.
 
+### Bypassing auth in local development
+
+If you need to work on a protected page without setting up the full login flow, set the `VITE_DEV_BYPASS_AUTH` flag in your `.env`:
+
+```
+VITE_DEV_BYPASS_AUTH=true
+```
+
+When this flag is `true`, `UserDataProvider` skips the token check and API call entirely, and injects a mock user directly:
+
+| Field | Value |
+|---|---|
+| `id` | `dev-bypass-user` |
+| `email` | `dev@bypass.local` |
+| `role` | `admin` |
+| `organization_id` | `dev-bypass-org` |
+
+The mock user has the `admin` role, so every `<ProtectedRoute roleOnly={[...]}>` guard will pass.
+
+> **Never set `VITE_DEV_BYPASS_AUTH=true` in a deployed environment.** This flag completely disables authentication and must only be used in local development.
+
 ---
 
 ## Environment Variables
@@ -118,6 +139,7 @@ Without a valid token in the URL or localStorage, the `ProtectedRoute` guard wil
 | `VITE_CVC_DASHBOARD_APP_URL` | URL of the CVC Dashboard app |
 | `VITE_SENTRY_DSN` | Sentry DSN key for error reporting |
 | `VITE_IS_SENTRY_ENABLED` | Set to `true` to enable Sentry (default: `false`) |
+| `VITE_DEV_BYPASS_AUTH` | Set to `true` to skip login in local development (default: `false`) |
 
 All variables are validated at startup using a Zod schema in [src/utils/env/](src/utils/env/).
 

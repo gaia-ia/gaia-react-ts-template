@@ -38,6 +38,15 @@ jobs:
             exit 1
           fi
 
+      - name: Validate dev flags are disabled for production
+        env:
+          PROD_VITE_DEV_BYPASS_AUTH: ${{ secrets.PROD_VITE_DEV_BYPASS_AUTH }}
+        run: |
+          if [ "$PROD_VITE_DEV_BYPASS_AUTH" = "true" ]; then
+            echo "::error::VITE_DEV_BYPASS_AUTH must not be 'true' in production. Update the PROD_VITE_DEV_BYPASS_AUTH secret before deploying."
+            exit 1
+          fi
+
       - name: Determine version bump
         id: bump
         run: |

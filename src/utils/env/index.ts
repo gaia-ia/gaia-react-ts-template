@@ -9,6 +9,7 @@ export const envSchema = z.object({
   VITE_CVC_DASHBOARD_APP_URL: z.string(),
   VITE_SENTRY_DSN: z.string(),
   VITE_IS_SENTRY_ENABLED: z.string(),
+  VITE_DEV_BYPASS_AUTH: z.string().optional(),
 });
 
 export const env = envSchema.parse(import.meta.env);
