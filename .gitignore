@@ -11,6 +11,7 @@
 /dist
 
 # misc
+.claude
 .env
 .DS_Store
 .env.local
