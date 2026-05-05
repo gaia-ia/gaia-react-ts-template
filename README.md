@@ -113,7 +113,7 @@ git push -u origin main
 Once your repository is set up, install the required dependencies:
 
 ```sh
-pnpm install
+yarn
 ```
 
 ### 3. Start the Development Server
@@ -121,7 +121,7 @@ pnpm install
 Run the following command to launch the development server:
 
 ```sh
-pnpm start
+yarn start
 ```
 
 This starts a local server and opens your application in the browser.
@@ -131,7 +131,7 @@ This starts a local server and opens your application in the browser.
 To generate an optimized production build, run:
 
 ```sh
-pnpm build
+yarn build
 ```
 
 This creates a `build/` folder with compiled files ready for deployment.
@@ -374,7 +374,7 @@ Application routes are managed in `Routes.tsx`. When a page has child pages, its
 import Homepage from '@pages/Homepage';
 import Login from '@pages/Login';
 import ProtectedRoute from '@utils/ProtectedRoute';
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const AppRoutes = () => {
   const protectedRoutes = [

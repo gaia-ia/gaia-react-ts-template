@@ -1,8 +1,13 @@
 import { useQueryFetch } from '@hooks';
-import type { TUserInfo } from '@types';
+
+type TUser = {
+  email: string;
+  full_name: string;
+  organization_id: string;
+};
 
 export const useGetUserInfo = (token: string | null) => {
-  return useQueryFetch<TUserInfo>(
+  return useQueryFetch<TUser>(
     ['userInfo'],
     '/users/info',
     token

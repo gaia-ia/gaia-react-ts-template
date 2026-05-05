@@ -1,20 +1,22 @@
+import Login from '@pages/Login';
 import AppLayout from '@pages/_layout/AppLayout';
-import Homepage from '@pages/Homepage';
 import ProtectedRoute from '@utils/ProtectedRoute';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 const AppRoutes = () => {
   const protectedRoutes = [
     {
-      path: '/homepage',
-      element: <Homepage />,
+      path: '/dashboard',
+      element: <div>Dashboard</div>,
     },
   ];
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/homepage" />} />
+        <Route path="/" element={<Navigate to="/dashboard" />} />
+
+        <Route path="/login/*" element={<Login />} />
 
         {protectedRoutes.map(route => (
           <Route

@@ -1,47 +1,19 @@
-name: Lint
-
+name: ESLint
 on:
+  push:
+    branches: ['main']
   pull_request:
-    branches:
-      - main
-      - qa
+    branches: ['main']
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pull-requests: read
-
 jobs:
   lint:
     runs-on: ubuntu-latest
-
-    concurrency:
-      group: lint-${{ github.ref }}
-      cancel-in-progress: true
-
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: '23.8'
-
-      - uses: pnpm/action-setup@v4
-
-      - uses: actions/cache@v4
-        with:
-          path: ~/.local/share/pnpm/store
-          key: pnpm-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: pnpm-${{ runner.os }}-
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Biome check
-        run: pnpm exec biome ci ./src
-
-      - name: ESLint (TanStack Query rules)
-        run: pnpm exec eslint 'src/**/*.{ts,tsx}'
-
-      - name: TypeScript type check
-        run: pnpm exec tsc --noEmit
+      - name: install
+        run: yarn
+      - name: ESLint
+        run: yarn lint

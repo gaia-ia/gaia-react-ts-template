@@ -1,12 +1,16 @@
 import { useGetUserInfo } from '@api/users';
-import type { TUserInfo } from '@types';
 import { env } from '@utils/env';
 import { createContext, useEffect, useState } from 'react';
+
+type TUserData = {
+  email: string;
+  full_name: string;
+};
 
 type TUserDataContext = {
   loggedIn: boolean | null;
   logout: () => void;
-  user: TUserInfo | null;
+  user: TUserData | null;
   loading: boolean;
 };
 
@@ -23,7 +27,7 @@ const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({
   const [token, setToken] = useState<string | null>(null);
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
   const [tokenLoaded, setTokenLoaded] = useState(false);
-  const [user, setUser] = useState<TUserInfo | null>(null);
+  const [user, setUser] = useState<TUserData | null>(null);
 
   useEffect(() => {
     const storedToken = localStorage.getItem('token');

@@ -7,6 +7,13 @@
       "changeLanguage": "Alterar idioma"
     }
   },
+  "Login": {
+    "title": "Boas vindas à GaIA",
+    "buttons": {
+      "forgotPassword": "Esqueceu sua senha?",
+      "login": "Entrar"
+    }
+  },
   "inputs": {
     "email": {
       "placeholder": "Email",

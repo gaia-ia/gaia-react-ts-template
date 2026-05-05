@@ -1,4 +1,3 @@
-import type { TUserInfo } from '@types';
 import type { LucideIcon } from 'lucide-react';
 
 export type Link = {
@@ -16,5 +15,7 @@ export type SidebarProps = {
   adminLinks?: Array<Link>;
   defaultLinks: Array<Link>;
   handleLogout: () => void;
-  user: TUserInfo | null;
+  user: {
+    full_name: string;
+  } | null;
 };

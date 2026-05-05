@@ -1,7 +1,7 @@
 import { Sidebar } from '@components';
 import { UserDataContext } from '@providers/UserDataProvider';
 import { Folder } from 'lucide-react';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 
 import styles from './styles.module.css';
 
@@ -15,8 +15,8 @@ const AppLayout: React.FC<Props> = ({ children }) => {
   const defaultLinks = [
     {
       icon: Folder,
-      title: 'Homepage',
-      to: '/homepage',
+      title: 'Dashboard',
+      to: '/dashboard',
     },
   ];
 

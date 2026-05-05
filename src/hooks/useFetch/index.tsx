@@ -1,13 +1,13 @@
 import { api } from '@libs/axios';
 import {
-  type UseMutationOptions,
-  type UseMutationResult,
-  type UseQueryOptions,
-  type UseQueryResult,
+  UseMutationOptions,
+  UseMutationResult,
+  UseQueryOptions,
+  UseQueryResult,
   useMutation,
   useQuery,
 } from '@tanstack/react-query';
-import type { AxiosError, AxiosRequestConfig } from 'axios';
+import { AxiosError, AxiosRequestConfig } from 'axios';
 
 export function useQueryFetch<TData>(
   queryKey: string[],

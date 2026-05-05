@@ -1,7 +1,7 @@
 import type { Preview, StoryFn } from '@storybook/react';
 import { themes } from '@storybook/theming';
 import React from 'react';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter } from 'react-router-dom';
 
 import '../src/index.css';
 

@@ -1,13 +1,26 @@
+import pluginJs from '@eslint/js';
 import pluginReactQuery from '@tanstack/eslint-plugin-query';
+import pluginStorybook from 'eslint-plugin-storybook';
+import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default [
   {
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      parser: tseslint.parser,
+    plugins: {
+      '@tanstack/query': pluginReactQuery,
+      'storybook/react': pluginStorybook,
     },
-    plugins: { '@tanstack/query': pluginReactQuery },
-    rules: pluginReactQuery.configs['flat/recommended'][0].rules,
   },
+  { files: ['**/*.{js,mjs,cjs,ts,tsx}'] },
+  { files: ['**/*.js'], languageOptions: { sourceType: 'commonjs' } },
+  { languageOptions: { globals: globals.browser } },
+  {
+    rules: {
+      eqeqeq: 'off',
+      'no-unused-vars': 'error',
+      'no-console': 'error',
+    },
+  },
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
 ];
