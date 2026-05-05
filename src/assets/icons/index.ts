@@ -1,5 +1,6 @@
 // Type Definitions
 export type SvgProps = {
+  title: string;
   size?: string;
   color?: string;
   className?: string;

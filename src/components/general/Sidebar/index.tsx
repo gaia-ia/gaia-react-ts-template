@@ -1,14 +1,20 @@
 import LongLogo from '@assets/icons/logos/LongLogo';
 import ShortLogo from '@assets/icons/logos/ShortLogo';
-import { Body, Button, Divider, Select, Tooltip } from '@gaia-dev/ui';
-import { useWindowSize } from '@hooks';
+import {
+  Body,
+  Button,
+  Divider,
+  Select,
+  Tooltip,
+  useWindowSize,
+} from '@gaia-dev/ui';
 import { ChevronsLeft, ChevronsRight, LogOut, Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router';
 
 import styles from './styles.module.css';
-import { type LinkProps, SidebarProps } from './types';
+import type { LinkProps, SidebarProps } from './types';
 
 const Link = ({ icon, title, to, isCollapsed, onClick }: LinkProps) => {
   const LucideIcon = icon;
@@ -48,9 +54,7 @@ const Sidebar = ({
 }: SidebarProps) => {
   const { i18n } = useTranslation();
   const { width } = useWindowSize();
-  const [isCollapsed, setIsCollapsed] = useState(
-    width && width < 700 ? false : true
-  );
+  const [isCollapsed, setIsCollapsed] = useState(!(width && width < 700));
   const hasAdminLinks = adminLinks && adminLinks.length > 0;
   const [lang, setLang] = useState<string>(i18n.language.split('-')[0]);
   const { t } = useTranslation();
@@ -61,7 +65,7 @@ const Sidebar = ({
 
   useEffect(() => {
     i18n.changeLanguage(lang);
-  }, [lang]);
+  }, [lang, i18n]);
 
   const MenuIcon =
     width && width < 700
@@ -80,14 +84,20 @@ const Sidebar = ({
         <div
           className={`${styles.logo_container} ${isCollapsed && styles.collapsed}`}
         >
-          {isCollapsed && width && width > 700 ? <ShortLogo /> : <LongLogo />}
+          {isCollapsed && width && width > 700 ? (
+            <ShortLogo title="Gaia" />
+          ) : (
+            <LongLogo title="Gaia" />
+          )}
 
           <Button
             className={styles.collapse_button}
-            variant="icon"
-            icon={MenuIcon}
+            size="icon-sm"
+            variant="ghost"
             onClick={handleCollapsed}
-          />
+          >
+            <MenuIcon />
+          </Button>
         </div>
 
         <div
@@ -132,14 +142,13 @@ const Sidebar = ({
             />
 
             <Button
-              variant="primary"
+              variant="secondary"
               className={`${styles.logout_button} ${isCollapsed && styles.collapsed}`}
-              iconPosition="right"
-              icon={LogOut}
               onClick={handleLogout}
               id="logout"
             >
               <Body>{user?.full_name || ''}</Body>
+              <LogOut size={24} />
             </Button>
             <Tooltip
               text={t('commom:buttons.logout')}
