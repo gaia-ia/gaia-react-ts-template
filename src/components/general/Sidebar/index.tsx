@@ -1,7 +1,13 @@
 import LongLogo from '@assets/icons/logos/LongLogo';
 import ShortLogo from '@assets/icons/logos/ShortLogo';
-import { Body, Button, Divider, Select, Tooltip } from '@gaia-dev/ui';
-import { useWindowSize } from '@hooks';
+import {
+  Body,
+  Button,
+  Divider,
+  Select,
+  Tooltip,
+  useWindowSize,
+} from '@gaia-dev/ui';
 import { ChevronsLeft, ChevronsRight, LogOut, Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';

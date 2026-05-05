@@ -34,6 +34,8 @@
       "@providers": ["./src/providers"],
       "@translation/*": ["./src/translation/*"],
       "@translation": ["./src/translation"],
+      "@types/*": ["./src/types/*"],
+      "@types": ["./src/types"],
       "@utils/*": ["./src/utils/*"],
       "@utils": ["./src/utils"]
     }
