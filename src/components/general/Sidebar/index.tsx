@@ -151,7 +151,7 @@ const Sidebar = ({
               <LogOut size={24} />
             </Button>
             <Tooltip
-              text={t('commom:buttons.logout')}
+              text={t('common:buttons.logout')}
               anchorSelect="#logout"
               color="var(--color-background-300)"
               place="right"

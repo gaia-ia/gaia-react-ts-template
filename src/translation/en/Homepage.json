@@ -1,0 +1,8 @@
+{
+  "title": "Homepage",
+  "subtitle": "Welcome to the Gaia React + TypeScript Template",
+  "body": "This is a React + TypeScript project template with a basic configuration.",
+  "buttons": {
+    "logout": "Logout"
+  }
+}

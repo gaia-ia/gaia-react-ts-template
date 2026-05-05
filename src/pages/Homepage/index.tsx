@@ -7,19 +7,19 @@ import { useTranslation } from 'react-i18next';
 import styles from './styles.module.css';
 
 const Homepage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('Homepage');
   const { logout } = useContext(UserDataContext);
 
   return (
     <div className={styles.container}>
       <SquareLogo title="Gaia" size="100" />
 
-      <Title>{t('Homepage.title')}</Title>
-      <Body>{t('Homepage.body')}</Body>
+      <Title>{t('subtitle')}</Title>
+      <Body>{t('body')}</Body>
 
       <div className={styles.buttons}>
         <Button className={styles.button} onClick={logout}>
-          {t('Homepage.buttons.logout')}
+          {t('buttons.logout')}
         </Button>
       </div>
     </div>

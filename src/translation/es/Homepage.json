@@ -1,0 +1,8 @@
+{
+  "title": "Homepage",
+  "subtitle": "Bienvenido al modelo de proyecto Gaia React + TypeScript",
+  "body": "Este es un modelo de proyecto React + TypeScript con una configuración básica.",
+  "buttons": {
+    "logout": "Cerrar sesión"
+  }
+}

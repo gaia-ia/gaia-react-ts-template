@@ -308,25 +308,71 @@ mutate({ name: 'example' });
 
 ### Internationalization
 
-1. Add translation keys to all three language files:
+The project uses [i18next](https://www.i18next.com/) + [react-i18next](https://react.i18next.com/), configured in [`src/i18n.tsx`](src/i18n.tsx).
+
+**Supported languages:** English (`en`), Spanish (`es`), Portuguese (`pt`)  
+**Fallback language:** English  
+**Language detection order:** querystring → cookie → `localStorage` (`i18nextLng` key) → browser navigator  
+**Namespaces:** `common` (default — shared keys), plus one namespace per page/feature (e.g. `Homepage`)
+
+#### Translation file structure
 
 ```
-src/translation/en/translation.json
-src/translation/es/translation.json
-src/translation/pt/translation.json
+src/translation/
+├── en/
+│   ├── common.json     # Shared keys: buttons, errors, roles, table, time_ago
+│   └── Homepage.json   # Page-specific keys
+├── es/
+│   ├── common.json
+│   └── Homepage.json
+└── pt/
+    ├── common.json
+    └── Homepage.json
 ```
 
-2. Use the `useTranslation` hook in your component:
+#### Usage patterns
 
+**Default namespace (`common`):**
 ```tsx
 import { useTranslation } from 'react-i18next';
 
 const { t } = useTranslation();
-
-return <h1>{t('my.key')}</h1>;
+t('buttons.save')
 ```
 
-The active language is stored in `localStorage` and can be changed via the Sidebar language picker.
+**Page/feature namespace:**
+```tsx
+const { t } = useTranslation('Homepage');
+t('subtitle')
+```
+
+**Cross-namespace access:**
+```tsx
+const { t } = useTranslation();
+t('Homepage:title')
+```
+
+**Variable interpolation** (uses `{{variable}}` placeholders in JSON):
+```tsx
+t('errors.invalidInput', { input: 'Email' })
+```
+
+**Changing the active language programmatically:**
+```tsx
+const { i18n } = useTranslation();
+i18n.changeLanguage('pt');
+```
+
+The Sidebar also exposes a language picker that calls `i18n.changeLanguage` and the selection is persisted automatically via `localStorage`.
+
+#### Adding a new namespace
+
+1. Create the JSON files for all three languages:
+   - `src/translation/en/MyFeature.json`
+   - `src/translation/es/MyFeature.json`
+   - `src/translation/pt/MyFeature.json`
+2. Register them in `src/i18n.tsx` under `resources.{lang}.MyFeature`.
+3. Use with `useTranslation('MyFeature')` in your component.
 
 ### Theming
 
