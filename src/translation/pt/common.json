@@ -1,0 +1,38 @@
+{
+  "buttons": {
+    "back": "Voltar",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "view_more": "Ver mais",
+    "logout": "Sair"
+  },
+  "errors": {
+    "invalidInput": "{{input}} é inválido",
+    "invalid": "Este campo é inválido",
+    "inputInvalidFormat": "Formato de {{input}} é inválido",
+    "invalidFormat": "Formato deste campo é inválido",
+    "inputRequired": "{{input}} é obrigatório",
+    "required": "Este campo é obrigatório"
+  },
+  "roles": {
+    "admin": "Admin",
+    "franchisee": "Franqueado",
+    "manager": "Marca"
+  },
+  "table": {
+    "total_items": "{{start}} - {{end}} de {{total}}",
+    "limit": "{{limit}} p/página"
+  },
+  "time_ago": {
+    "seconds_one": "{{count}} segundo atrás",
+    "seconds_other": "{{count}} segundos atrás",
+    "minutes_one": "{{count}} minuto atrás",
+    "minutes_other": "{{count}} minutos atrás",
+    "hours_one": "{{count}} hora atrás",
+    "hours_other": "{{count}} horas atrás",
+    "days_one": "{{count}} dia atrás",
+    "days_other": "{{count}} dias atrás"
+  }
+}

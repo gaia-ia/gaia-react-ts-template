@@ -1,6 +1,6 @@
-import { SvgComponent } from '@assets/icons';
+import type { SvgComponent } from '@assets/icons';
 
-const CampaignPhone: SvgComponent = ({ className, size = '300' }) => {
+const CampaignPhone: SvgComponent = ({ title, className, size = '300' }) => {
   return (
     <svg
       width={size}
@@ -10,6 +10,7 @@ const CampaignPhone: SvgComponent = ({ className, size = '300' }) => {
       className={className}
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>{title}</title>
       <path
         d="M288.6 276.342H12.0361C11.9565 276.342 11.8802 276.31 11.824 276.254C11.7677 276.198 11.7361 276.122 11.7361 276.042C11.7361 275.962 11.7677 275.886 11.824 275.83C11.8802 275.774 11.9565 275.742 12.0361 275.742H288.6C288.68 275.742 288.756 275.774 288.812 275.83C288.868 275.886 288.9 275.962 288.9 276.042C288.9 276.122 288.868 276.198 288.812 276.254C288.756 276.31 288.68 276.342 288.6 276.342Z"
         fill="var(--color-text-950)"

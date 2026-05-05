@@ -1,7 +1,8 @@
 import { Sidebar } from '@components';
 import { UserDataContext } from '@providers/UserDataProvider';
 import { Folder } from 'lucide-react';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import styles from './styles.module.css';
 
@@ -11,12 +12,13 @@ type Props = {
 
 const AppLayout: React.FC<Props> = ({ children }) => {
   const { user, logout } = useContext(UserDataContext);
+  const { t } = useTranslation();
 
   const defaultLinks = [
     {
       icon: Folder,
-      title: 'Dashboard',
-      to: '/dashboard',
+      title: t('Homepage:title'),
+      to: '/homepage',
     },
   ];
 

@@ -1,636 +1,444 @@
-# Gaia React TypeScript Template
+# gaia-react-ts-template
 
-## Introduction
+A production-ready React 19 + TypeScript + Vite starter template used across all Gaia frontend applications.
 
-Welcome to the **Gaia React TypeScript Template**! This boilerplate is designed to help you quickly set up a modern, scalable React application with TypeScript. It includes essential tools, best practices, and configurations to streamline your development process.
-
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [1. Create a New Repository from This Template](#1-create-a-new-repository-from-this-template)
-  - [2. Install Dependencies](#2-install-dependencies)
-  - [3. Start the Development Server](#3-start-the-development-server)
-  - [4. Build for Production](#4-build-for-production)
-- [Project Structure](#project-structure)
-- [API Structure](#api-structure)
-  - [Example: `advice/index.tsx`](#example-adviceindextsx)
-- [Components Structure](#components-structure)
-  - [Example Structure](#example-structure)
-  - [Component Folder Structure](#component-folder-structure)
-  - [`components/index.ts`](#componentsindexts)
-- [Hooks Structure](#hooks-structure)
-  - [Example Structure](#example-structure-1)
-  - [Example Hook: `useFetch`](#example-hook-usefetch)
-  - [`hooks/index.tsx`](#hooksindextsx)
-  - [Example](#example)
-- [Libs Structure](#libs-structure)
-  - [Example Structure](#example-structure-2)
-  - [Example: `libs/react-query/index.tsx`](#example-libsreact-queryindextsx)
-  - [How It Works](#how-it-works)
-- [Pages Structure](#pages-structure)
-  - [Example Structure](#example-structure-3)
-  - [Routing Management](#routing-management)
-    - [Example: `Routes.tsx`](#example-routestsx)
-    - [Example: `pages/Login/index.tsx`](#example-pagesloginindextsx)
-- [Providers Structure](#providers-structure)
-  - [Example Structure](#example-structure-4)
-  - [Example: `ReactQueryProvider/index.tsx`](#example-reactqueryproviderindextsx)
-  - [Example: `providers/index.tsx`](#example-providersindextsx)
-  - [Example: `App.tsx` with `CoreProvider`](#example-apptsx-with-coreprovider)
-- [Translation Structure](#translation-structure)
-  - [Example Structure](#example-structure-5)
-  - [Configuration: `i18n.tsx`](#configuration-i18ntsx)
-  - [Adding More Languages](#adding-more-languages)
-- [Utils Structure](#utils-structure)
-  - [Example Structure](#example-structure-6)
-  - [Example: `utils/env/index.tsx`](#example-utilsenvindextsx)
-  - [How It Works](#how-it-works-1)
-- [Prettier Configuration in VSCode](#prettier-configuration-in-vscode)
-  - [Step 1: Install the Prettier Extension](#step-1-install-the-prettier-extension)
-  - [Step 2: Update User Settings](#step-2-update-user-settings)
-  - [Step 3: Restart VSCode](#step-3-restart-vscode)
-- [General Information](#general-information)
-  - [Naming Conventions](#naming-conventions)
-  - [Best Practices](#best-practices)
-
-## Features
-
-- **React 19** – Build interactive and efficient UIs with the latest version of React.
-- **TypeScript** – Enhance code quality and maintainability with static typing.
-- **React Router** – Manage navigation seamlessly using `react-router-dom`.
-- **React Query** – Handle data fetching and caching efficiently with `@tanstack/react-query`.
-- **React Hook Form** – Simplify form handling and validation.
-- **Zod** – Schema validation for robust TypeScript applications.
-- **i18next** – Easily add internationalization support.
-- **ESLint & Prettier** – Maintain clean and consistent code formatting.
-- **Storybook** – Develop UI components in isolation.
-- **Jest & React Testing Library** – Set up unit and integration testing.
-- **Axios** – Make API requests seamlessly.
-
-## Getting Started
-
-### 1. Create a New Repository from This Template
-
-This is a **private template repository**, so you can create a new repository from it using GitHub:
-
-1. Go to the repository on GitHub.
-2. Click **"Use this template"** in the top-right corner.
-3. Select **"Create a new repository"**.
-4. Enter your repository details (name, description, visibility, etc.).
-5. Click **"Create repository"**.
-
-Once your repository is created, you can clone it and start working.
-
-Alternatively, you can manually clone and set up a new repository:
-
-```sh
-# Clone the repository
-git clone https://github.com/gaia-ia/gaia-react-ts-template.git my-new-project
-
-# Navigate into the project folder
-cd my-new-project
-
-# Remove the existing Git history
-rm -rf .git
-
-# Initialize a new Git repository
-git init
-
-# Add all files to the new repository
-git add .
-
-# Commit the initial files
-git commit -m "Initial commit from Gaia React TS Template"
-
-# Set up a new remote repository (replace with your repo URL)
-git remote add origin <your-repository-url>
-
-# Push to your repository
-git push -u origin main
-```
-
-### 2. Install Dependencies
-
-Once your repository is set up, install the required dependencies:
-
-```sh
-yarn
-```
-
-### 3. Start the Development Server
-
-Run the following command to launch the development server:
-
-```sh
-yarn start
-```
-
-This starts a local server and opens your application in the browser.
-
-### 4. Build for Production
-
-To generate an optimized production build, run:
-
-```sh
-yarn build
-```
-
-This creates a `build/` folder with compiled files ready for deployment.
+![Node](https://img.shields.io/badge/node-18%2B-green) ![pnpm](https://img.shields.io/badge/pnpm-10%2B-orange) ![React](https://img.shields.io/badge/react-19-blue) ![TypeScript](https://img.shields.io/badge/typescript-strict-blue)
 
 ---
 
-You're now ready to start developing with the **Gaia React TypeScript Template**! 🚀
+## Overview
+
+This template ships with everything a Gaia frontend app needs from day one:
+
+- **React 19 + Vite 6 + TypeScript** (strict mode)
+- **Authentication** — token-based flow via URL param → localStorage
+- **Role-based protected routing** via React Router v7
+- **API layer** — Axios instance + TanStack Query v5 hooks
+- **Internationalization** — EN / ES / PT via i18next
+- **Light/dark theming** via `@gaia-dev/ui` and `@gaia-dev/theme`
+- **Toast notifications** via react-toastify
+- **Error tracking** via Sentry (opt-in)
+- **CI enforcement** — Biome + ESLint + TypeScript checks on every PR
+- **Storybook 8** component explorer
+
+---
+
+## Tech Stack
+
+| Category | Library | Version |
+|---|---|---|
+| UI Framework | React | 19 |
+| Build Tool | Vite (SWC) | 6 |
+| Language | TypeScript | 6 |
+| Routing | React Router | 7 |
+| Data Fetching | TanStack Query | 5 |
+| HTTP Client | Axios | 1 |
+| Forms | React Hook Form | 5 |
+| Validation | Zod | 3 |
+| i18n | i18next + react-i18next | 25 |
+| Icons | Lucide React | 0.475 |
+| Component Library | @gaia-dev/ui | 4 |
+| Design Tokens | @gaia-dev/theme | 1 |
+| Notifications | react-toastify | 11 |
+| Error Tracking | @sentry/react | 10 |
+| Linter/Formatter | Biome | 2 |
+| Component Explorer | Storybook | 8 |
+
+---
+
+## Getting Started
+
+### 1. Use this template on GitHub
+
+Go to the repository on GitHub and click **"Use this template"** → **"Create a new repository"**. This creates a fresh copy of the template under your account or organization without carrying over the commit history.
+
+**Repository naming convention:** Name your new repository following the `{product}-app-front` pattern used by all existing Gaia frontend repos:
+
+| Repo name |
+|---|
+| `gaia-app-front` |
+| `cria-app-front` |
+| `copia-app-front` |
+| `brandsync-app-front` |
+
+Then clone your new repository:
+
+```bash
+git clone <your-new-repo-url>
+cd <your-new-repo>
+```
+
+### 2. Install dependencies
+
+```bash
+pnpm install
+```
+
+> Requires **Node 18+** and **pnpm 10+**. Check with `node -v` and `pnpm -v`.
+
+### 3. Configure environment variables
+
+```bash
+cp .env.example .env
+```
+
+Open `.env` and fill in the values. See the [Environment Variables](#environment-variables) section below for details.
+
+> **Contact a responsible developer** on the team to obtain the correct values for your environment. These are not committed to the repository.
+
+### 4. Start the dev server
+
+```bash
+pnpm start
+```
+
+The app runs at [http://localhost:3002](http://localhost:3002).
+
+---
+
+## Login dependency
+
+Authentication tokens are issued by the main Gaia app: [gaia-ia/gaia-app-front](https://github.com/gaia-ia/gaia-app-front).
+
+The template app receives the token as a `?token=` URL query parameter — the Gaia app redirects the user to your app's URL after login with the token appended. This means **a running instance of `gaia-app-front`** (local or deployed) must be configured to redirect to this app's URL for the login flow to work.
+
+Without a valid token in the URL or localStorage, the `ProtectedRoute` guard will redirect the user back to the Gaia app login page.
+
+### Bypassing auth in local development
+
+If you need to work on a protected page without setting up the full login flow, set the `VITE_DEV_BYPASS_AUTH` flag in your `.env`:
+
+```
+VITE_DEV_BYPASS_AUTH=true
+```
+
+When this flag is `true`, `UserDataProvider` skips the token check and API call entirely, and injects a mock user directly:
+
+| Field | Value |
+|---|---|
+| `id` | `dev-bypass-user` |
+| `email` | `dev@bypass.local` |
+| `role` | `admin` |
+| `organization_id` | `dev-bypass-org` |
+
+The mock user has the `admin` role, so every `<ProtectedRoute roleOnly={[...]}>` guard will pass.
+
+> **Never set `VITE_DEV_BYPASS_AUTH=true` in a deployed environment.** This flag completely disables authentication and must only be used in local development.
+
+---
+
+## Environment Variables
+
+| Variable | Description |
+|---|---|
+| `VITE_API_URL` | Base URL of the backend API this app consumes |
+| `VITE_GAIA_APP_URL` | URL of the main Gaia app (used for login/logout redirects) |
+| `VITE_CRIA_APP_URL` | URL of the Cria app |
+| `VITE_BRANDSYNC_APP_URL` | URL of the Brandsync app |
+| `VITE_COPIA_APP_URL` | URL of the Copia app |
+| `VITE_CVC_DASHBOARD_APP_URL` | URL of the CVC Dashboard app |
+| `VITE_SENTRY_DSN` | Sentry DSN key for error reporting |
+| `VITE_IS_SENTRY_ENABLED` | Set to `true` to enable Sentry (default: `false`) |
+| `VITE_DEV_BYPASS_AUTH` | Set to `true` to skip login in local development (default: `false`) |
+
+All variables are validated at startup using a Zod schema in [src/utils/env/](src/utils/env/).
+
+### Sentry
+
+The template includes Sentry integration but it is **disabled by default**. To enable it, contact a responsible developer — they will configure the Sentry project for your app and provide the DSN key. Once you have it:
+
+1. Set `VITE_SENTRY_DSN=<your-dsn>` in `.env`
+2. Set `VITE_IS_SENTRY_ENABLED=true`
+
+---
+
+## Available Scripts
+
+| Script | Description |
+|---|---|
+| `pnpm start` | Start dev server on port 3002 |
+| `pnpm build` | Type-check + production build |
+| `pnpm preview` | Preview the production build locally |
+| `pnpm lint` | Run Biome lint + ESLint on `src/` |
+| `pnpm format` | Auto-format `src/` with Biome |
+| `pnpm check` | Biome lint + format in one pass |
+| `pnpm storybook` | Start Storybook on port 6006 |
+| `pnpm build-storybook` | Build a static Storybook |
+
+---
 
 ## Project Structure
 
-This template is organized following a modular and scalable architecture to enhance maintainability and reusability:
-
 ```
 src/
-├── App.tsx
-├── Routes.tsx
-├── api/                  # API request handlers
-│   └── advice/
-│       └── index.tsx
-├── assets/               # Static assets (images, icons, etc.)
-│   ├── icons/
-│   │   ├── index.ts
-│   │   └── logos/
-│   │       └── SquareLogo.tsx
-│   └── images/
-│       └── labyrinth.jpg
-├── components/           # Reusable UI components
-│   ├── buttons/
-│   ├── general/
-│   ├── inputs/
-│   ├── typography/
-│   ├── index.ts
-├── hooks/                # Custom React hooks
-│   ├── index.tsx
-│   └── useFetch/
-├── i18n.tsx              # Internationalization setup
-├── index.css             # Global styles
-├── index.tsx             # Application entry point
-├── libs/                 # Third-party library configurations
-│   ├── axios/
-│   └── react-query/
-├── pages/                # Page components mapped to routes
-│   ├── Homepage/
-│   ├── Login/
-│   │   ├── components/
-│   │   │   ├── LoginForm/
-│   │   ├── pages/
-│   │   │   ├── SignUp/
-│   │   │   ├── PasswordReset/
-│   │   ├── index.tsx
-│   │   ├── styles.module.css
-├── providers/            # Context providers for state management
+├── api/                  # API endpoint definitions per feature
+│   ├── auth/             # Login, forgot password, reset password
+│   └── users/            # Current user info
+├── assets/
+│   ├── icons/            # SVG icons and logos
+│   └── illustrations/    # SVG illustrations
+├── components/
+│   └── general/
+│       └── Sidebar/      # Main sidebar (collapsible, language switcher)
+├── hooks/
+│   └── useFetch/         # useQueryFetch and useMutationFetch
+├── libs/
+│   ├── axios/            # Configured Axios instance
+│   └── react-query/      # QueryClient setup
+├── pages/
+│   ├── Homepage/         # Example protected page
+│   └── _layout/
+│       └── AppLayout/    # Layout wrapper (Sidebar + outlet)
+├── providers/
 │   ├── ReactQueryProvider/
-│   ├── ThemeProvider/
-│   └── index.tsx
-├── translation/          # Localization files
-│   ├── en/
-│   ├── es/
-│   └── pt/
-└── utils/                # General utility functions
-    ├── ProtectedRoute/
-    └── env/
+│   ├── ThemeProvider/    # Light/dark theme context
+│   ├── ToastProvider/    # Toast notification context
+│   └── UserDataProvider/ # Auth state and user data
+├── translation/
+│   ├── en/translation.json
+│   ├── es/translation.json
+│   └── pt/translation.json
+├── types/
+│   └── users/            # TUserInfo, TUserDetail, TRole
+├── utils/
+│   ├── ProtectedRoute/   # Route guard component
+│   └── env/              # Zod env schema validation
+├── App.tsx               # Root component with all providers
+├── Routes.tsx            # Route definitions
+├── i18n.tsx              # i18next configuration
+├── bootstrap.ts          # Token extraction from URL on load
+└── index.tsx             # Entry point with Sentry init
 ```
 
-## API Structure
+---
 
-Each folder inside `api/` represents a group of API requests. These requests are handled using `react-query` and `axios` to simplify data fetching and caching.
+## Path Aliases
 
-### Example: `advice/index.tsx`
+All aliases are configured in both [vite.config.ts](vite.config.ts) and [tsconfig.json](tsconfig.json).
 
-```ts
-import { useFetch } from '@hooks';
+| Alias | Resolves to |
+|---|---|
+| `@api` | `src/api` |
+| `@assets` | `src/assets` |
+| `@components` | `src/components` |
+| `@hooks` | `src/hooks` |
+| `@libs` | `src/libs` |
+| `@pages` | `src/pages` |
+| `@providers` | `src/providers` |
+| `@translation` | `src/translation` |
+| `@types` | `src/types` |
+| `@utils` | `src/utils` |
 
-type TAdvice = {
-  slip: {
-    id: number;
-    advice: string;
-  };
-};
+---
 
-export const useGetAdvice = () => useFetch<TAdvice>(['advice'], '/advice');
-```
+## Core Patterns
 
-## Components Structure
+### Authentication
 
-The `components/` folder organizes reusable UI components into logical groups. Each group is a folder that contains specific components.
+The app uses a token-based auth flow:
 
-### Example Structure
+1. On load, [src/bootstrap.ts](src/bootstrap.ts) reads `?token=` from the URL and saves it to `localStorage`
+2. The Axios instance reads the token from `localStorage` and sends it as `Authorization: Bearer <token>` on every request
+3. `UserDataProvider` exposes `{ loggedIn, user, loading, logout }` via context
+4. Calling `logout()` clears the token and redirects to `${VITE_GAIA_APP_URL}/logout`
 
-```
-components/
-├── buttons/
-│   ├── Button/
-│   │   ├── index.tsx
-│   │   ├── styles.module.css
-│   │   ├── types.ts
-│   │   └── index.stories.tsx
-│   └── ButtonLink/
-│       ├── index.tsx
-│       ├── styles.module.css
-│       ├── types.ts
-│       └── index.stories.tsx
-├── general/
-├── inputs/
-├── typography/
-├── index.ts
-```
+### Adding a Protected Page
 
-### Component Folder Structure
-
-Each component inside a group has its own folder containing:
-
-- `index.tsx`: The component implementation.
-- `styles.module.css`: The component-specific styles.
-- `types.ts`: Type definitions for the component props.
-- `index.stories.tsx`: Storybook configuration for UI testing and previewing.
-
-### `components/index.ts`
-
-This file exports all components for better organization and ease of import across the project. Instead of importing components individually, you can use:
-
-```ts
-import { Button, ButtonLink } from '@components';
-```
-
-## Hooks Structure
-
-The `hooks/` folder contains reusable custom React hooks. Each hook is stored in its own folder, named in **camelCase** and always prefixed with `use` to follow React conventions.
-
-### Example Structure
+1. Create the page folder and component:
 
 ```
-hooks/
+src/pages/MyPage/
 ├── index.tsx
-├── useFetch/
-│   ├── index.tsx
+└── MyPage.module.css
 ```
 
-### Example Hook: `useFetch`
+2. Export it from the folder's `index.ts` barrel file.
 
-```ts
-import { api } from '@libs/axios';
-import {
-  UseQueryOptions,
-  UseQueryResult,
-  useQuery,
-} from '@tanstack/react-query';
-
-export function useFetch<TData>(
-  queryKey: string[],
-  endpoint: string,
-  options?: Omit<UseQueryOptions<TData, Error>, 'queryKey' | 'queryFn'>
-): UseQueryResult<TData> {
-  return useQuery<TData>({
-    queryKey,
-    queryFn: async () => {
-      const res = await api.get<TData>(endpoint);
-      return res.data;
-    },
-    ...options,
-  });
-}
-
-export default useFetch;
-```
-
-### `hooks/index.tsx`
-
-The `index.tsx` file inside the `hooks/` folder acts as a central export file to keep imports clean and organized.
-
-#### Example:
-
-```ts
-export { default as useFetch } from './useFetch';
-export { default as useAuth } from './useAuth';
-```
-
-Instead of importing hooks individually, you can import them more efficiently:
-
-```ts
-import { useAuth, useFetch } from '@hooks';
-```
-
-## Libs Structure
-
-The `libs/` folder contains configurations for third-party libraries used within the project. Each library has its own folder, named in **kebab-case**, containing an `index.tsx` file that manages its configuration.
-
-### Example Structure
-
-```
-libs/
-├── axios/
-│   ├── index.tsx
-├── react-query/
-│   ├── index.tsx
-```
-
-### Example: `libs/react-query/index.tsx`
-
-```ts
-import { QueryClient } from '@tanstack/react-query';
-
-export const queryClient = new QueryClient();
-```
-
-### How It Works
-
-- **Each library is encapsulated within its own folder**, making configurations modular and easy to manage.
-- **Consistent kebab-case naming** keeps folder names uniform.
-- **Encapsulated configurations** ensure that global setups, such as query clients or axios instances, are centralized.
-
-### Pages Structure
-
-The `pages/` directory contains the application's main views. Each page follows the **PascalCase** convention and resides in its dedicated folder, typically containing:
-
-- `index.tsx` – The main page component.
-- `styles.module.css` – Page-specific styles.
-
-### Example Structure
-
-```
-pages/
-├── Login/
-│   ├── components/
-│   │   ├── LoginForm/
-│   ├── pages/
-│   │   ├── SignUp/
-│   │   ├── PasswordReset/
-│   ├── index.tsx
-│   ├── styles.module.css
-```
-
-### Routing Management
-
-Application routes are managed in `Routes.tsx`. When a page has child pages, its routing logic is handled within the page's `index.tsx`.
-
-#### Example: `Routes.tsx`
+3. Add the route in [src/Routes.tsx](src/Routes.tsx):
 
 ```tsx
-import Homepage from '@pages/Homepage';
-import Login from '@pages/Login';
-import ProtectedRoute from '@utils/ProtectedRoute';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-const AppRoutes = () => {
-  const protectedRoutes = [
-    {
-      path: '/',
-      element: <Homepage />,
-    },
-  ];
-
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        {protectedRoutes.map(route => (
-          <Route
-            key={route.path}
-            path={route.path}
-            element={<ProtectedRoute>{route.element}</ProtectedRoute>}
-          />
-        ))}
-      </Routes>
-    </BrowserRouter>
-  );
-};
-
-export default AppRoutes;
+<Route
+  path="/my-page"
+  element={
+    <ProtectedRoute>
+      <AppLayout>
+        <MyPage />
+      </AppLayout>
+    </ProtectedRoute>
+  }
+/>
 ```
 
-#### Example: `pages/Login/index.tsx`
+To restrict access by role, pass the `roleOnly` prop:
 
 ```tsx
-<Routes>
-  <Route path="/" element={<LoginPage />} />
-  <Route path="signup" element={<SignUp />} />
-  <Route path="forgot" element={<PasswordReset />} />
-</Routes>
+<ProtectedRoute roleOnly={['admin', 'manager']}>
 ```
 
-## Providers Structure
+Available roles: `'admin'`, `'manager'`, `'franchisee'` (see [src/types/users/](src/types/users/)).
 
-The `providers/` folder is used to manage application-wide state and context providers. Each provider is stored in its own folder, named in **PascalCase**, containing:
+### Making API Calls
 
-- `index.tsx`: The provider component configuration.
+Use the hooks from [src/hooks/useFetch/](src/hooks/useFetch/):
 
-Additionally, the `providers/index.tsx` file acts as a **Core Provider**, wrapping all necessary providers together to keep `App.tsx` clean and organized.
-
-### Example Structure
-
-```
-providers/
-├── ReactQueryProvider/
-│   ├── index.tsx
-├── ThemeProvider/
-│   ├── index.tsx
-├── index.tsx
-```
-
-### Example: `ReactQueryProvider/index.tsx`
+**GET request:**
 
 ```tsx
-import { queryClient } from '@libs/react-query';
-import { QueryClientProvider } from '@tanstack/react-query';
+import { useQueryFetch } from '@hooks/useFetch';
 
-type Props = {
-  children: React.ReactNode;
-};
-
-const ReactQueryProvider: React.FC<Props> = ({ children }) => {
-  return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  );
-};
-
-export default ReactQueryProvider;
+const { data, isLoading } = useQueryFetch<TMyResponse>({
+  endpoint: '/my-resource',
+  token: user.token,
+});
 ```
 
-### Example: `providers/index.tsx`
+**Mutation (POST / PUT / DELETE / PATCH):**
 
 ```tsx
-import ReactQueryProvider from './ReactQueryProvider';
-import ThemeProvider from './ThemeProvider';
+import { useMutationFetch } from '@hooks/useFetch';
 
-type Props = {
-  children: React.ReactNode;
-};
+const { mutate, isPending } = useMutationFetch<TMyResponse, TMyBody>({
+  endpoint: '/my-resource',
+  method: 'POST',
+  token: user.token,
+});
 
-const CoreProvider: React.FC<Props> = ({ children }) => {
-  return (
-    <ThemeProvider>
-      <ReactQueryProvider>{children}</ReactQueryProvider>
-    </ThemeProvider>
-  );
-};
-
-export default CoreProvider;
+mutate({ name: 'example' });
 ```
 
-### Example: `App.tsx` with `CoreProvider`
+### Internationalization
 
-```tsx
-import { Header } from '@components';
-import CoreProvider from '@providers';
+The project uses [i18next](https://www.i18next.com/) + [react-i18next](https://react.i18next.com/), configured in [`src/i18n.tsx`](src/i18n.tsx).
 
-import Routes from './Routes';
-import './i18n';
+**Supported languages:** English (`en`), Spanish (`es`), Portuguese (`pt`)  
+**Fallback language:** English  
+**Language detection order:** querystring → cookie → `localStorage` (`i18nextLng` key) → browser navigator  
+**Namespaces:** `common` (default — shared keys), plus one namespace per page/feature (e.g. `Homepage`)
 
-const App = () => (
-  <CoreProvider>
-    <Header />
-    <Routes />
-  </CoreProvider>
-);
-
-export default App;
-```
-
-## Translation Structure
-
-The `translation/` folder handles the application's internationalization. Each language has its own folder, named using its respective language code (`en/`, `es/`, `pt/`), and contains a `translation.json` file with the translated strings.
-
-### Example Structure
+#### Translation file structure
 
 ```
-translation/
+src/translation/
 ├── en/
-│   ├── translation.json
+│   ├── common.json     # Shared keys: buttons, errors, roles, table, time_ago
+│   └── Homepage.json   # Page-specific keys
 ├── es/
-│   ├── translation.json
-├── pt/
-│   ├── translation.json
+│   ├── common.json
+│   └── Homepage.json
+└── pt/
+    ├── common.json
+    └── Homepage.json
 ```
 
-### Configuration: `i18n.tsx`
+#### Usage patterns
+
+**Default namespace (`common`):**
+```tsx
+import { useTranslation } from 'react-i18next';
+
+const { t } = useTranslation();
+t('buttons.save')
+```
+
+**Page/feature namespace:**
+```tsx
+const { t } = useTranslation('Homepage');
+t('subtitle')
+```
+
+**Cross-namespace access:**
+```tsx
+const { t } = useTranslation();
+t('Homepage:title')
+```
+
+**Variable interpolation** (uses `{{variable}}` placeholders in JSON):
+```tsx
+t('errors.invalidInput', { input: 'Email' })
+```
+
+**Changing the active language programmatically:**
+```tsx
+const { i18n } = useTranslation();
+i18n.changeLanguage('pt');
+```
+
+The Sidebar also exposes a language picker that calls `i18n.changeLanguage` and the selection is persisted automatically via `localStorage`.
+
+#### Adding a new namespace
+
+1. Create the JSON files for all three languages:
+   - `src/translation/en/MyFeature.json`
+   - `src/translation/es/MyFeature.json`
+   - `src/translation/pt/MyFeature.json`
+2. Register them in `src/i18n.tsx` under `resources.{lang}.MyFeature`.
+3. Use with `useTranslation('MyFeature')` in your component.
+
+### Theming
 
 ```tsx
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
+import { useTheme } from '@providers/ThemeProvider';
 
-import translationEN from './translation/en/translation.json';
-import translationES from './translation/es/translation.json';
-import translationPT from './translation/pt/translation.json';
-
-i18n.use(initReactI18next).init({
-  resources: {
-    en: {
-      translation: translationEN,
-    },
-    es: {
-      translation: translationES,
-    },
-    pt: {
-      translation: translationPT,
-    },
-  },
-  lng: localStorage.getItem('i18nextLng') || 'en',
-  fallbackLng: localStorage.getItem('i18nextLng') || 'en',
-  interpolation: {
-    escapeValue: false,
-  },
-});
-
-export default i18n;
+const { theme, toggleTheme } = useTheme();
+// theme: 'light' | 'dark'
 ```
 
-### Adding More Languages
+The selected theme is persisted in `localStorage` automatically.
 
-To add a new language:
+---
 
-1. Create a new folder inside `translation/` with the appropriate language code (e.g., `fr/` for French).
-2. Add a `translation.json` file inside the new folder.
-3. Update the `resources` key in `i18n.tsx` to include the new language.
+## CI/CD Setup
 
-## Utils Structure
+### Linter (works out of the box)
 
-The `utils/` folder contains helper functions and utility configurations that are used across the application. Each utility has its own folder, containing an `index.tsx` file where its logic is implemented.
+The [.github/workflows/linter.yml](.github/workflows/linter.yml) workflow runs automatically on every PR targeting `main` or `qa`. It runs:
 
-### Example Structure
+- Biome lint + format check
+- ESLint (with TanStack Query rules)
+- TypeScript type check (`tsc --noEmit`)
 
-```
-utils/
-├── ProtectedRoute/
-│   ├── index.tsx
-├── env/
-│   ├── index.tsx
-```
+No additional configuration is needed.
 
-### Example: `utils/env/index.tsx`
+### Deploy to QA and Production
 
-```tsx
-import { z } from 'zod';
+The deploy workflows ([deploy-qa.yml](.github/workflows/deploy-qa.yml) and [deploy-prod.yml](.github/workflows/deploy-prod.yml)) have the GCP deployment steps **commented out by default**. To activate them:
 
-export const envSchema = z.object({
-  REACT_APP_API_URL: z.string(),
-});
+1. **Uncomment the GCP deploy steps** in both workflow files.
 
-export const env = envSchema.parse(process.env);
-```
+2. **Add the required secrets** in your GitHub repository under **Settings → Secrets and variables → Actions**:
 
-### How It Works
+   | Secret | Description |
+   |---|---|
+   | `GCP_SA_KEY` | GCP service account JSON key for deployment |
+   | `VITE_API_URL` | API URL for the target environment |
+   | Any other `VITE_*` vars | All env vars needed at build time |
 
-- **Each utility is encapsulated in its own folder**, making it modular and reusable.
-- **New utilities can be easily added by creating a new folder in `utils/` and defining their logic inside an `index.tsx` file.**
+   > Contact a responsible developer to obtain the correct secret values for each environment.
 
-## Prettier Configuration in VSCode
+3. **Configure branch protection rules** in GitHub for `qa` and `main` if not already set.
 
-To ensure consistent code formatting, configure **Prettier** in VSCode by following these steps:
+### Version bumping (production only)
 
-### Step 1: Install the Prettier Extension
+The production deploy workflow automatically bumps the package version based on the merged PR title:
 
-Install **Prettier - Code formatter** from the VSCode Marketplace:
-[Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+| PR title prefix | Version bump |
+|---|---|
+| `feat!:` | Major |
+| `feat:` | Minor |
+| Anything else | Patch |
 
-### Step 2: Update User Settings
+---
 
-1. Open the **Command Palette** (`Cmd + Shift + P` on macOS, `Ctrl + Shift + P` on Windows/Linux).
-2. Search for `Preferences: Open User Settings (JSON)` and select it.
-3. Add or update the following configuration:
+## Code Quality
 
-```json
-{
-  // Other existing settings
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.formatOnSave": true,
-  "editor.tabSize": 2,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnPaste": true
-}
-```
+The project uses [Biome](https://biomejs.dev/) for linting and formatting with the following enforced rules:
 
-### Step 3: Restart VSCode
-
-Restart VSCode to apply the changes. Prettier will now automatically format your code on save and paste, ensuring consistent styling throughout the project.
-
-## General Information
-
-### Naming Conventions
-
-- **Folders**: Generally use **kebab-case** (e.g., `api/`, `libs/`, `utils/`).
-- **Hooks**: Use **camelCase**, always prefixed with `use` (e.g., `useFetch/`).
-- **Components & Pages**: Use **PascalCase** (e.g., `LoginForm/`, `Homepage/`).
-- **CSS Files**: Named as `styles.module.css` or `anything.module.css`.
-- **Stories**: Located inside each component folder, named `index.stories.tsx`.
-
-### Best Practices
-
-- **CSS Classes**: Written in **snake_case** for consistency.
-- **Semicolons**: Always use semicolons (`;`) at the end of statements.
-- **File Endings**: Always include an empty line at the end of files.
-- **Avoid Literal Strings in JSX**: Always use `i18n` translation files instead of hardcoded strings.
-- **No Unused Variables**: Always remove unused variables to keep the code clean.
-- **Environment Variables**: Always define env variables inside the `env` config file and import them with `zod` validation.
+- No `console` statements
+- No unused variables
+- No JSX string literals (use translation keys instead)
+- 2-space indentation
+- 80-character line width
+- Single quotes
+- Semicolons always
+- ES5 trailing commas
+- Organized imports: Node built-ins → external packages → internal aliases
