@@ -1,0 +1,119 @@
+name: Deploy React to GCP - Production
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    if: (github.event.pull_request.merged == true) || github.event_name == 'workflow_dispatch'
+    
+    concurrency:
+      group: deploy-prod-${{ github.ref }}
+      cancel-in-progress: false
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify PR has an approved review
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COUNT=$(gh api repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
+            --jq '[.[] | select(.state == "APPROVED")] | length')
+          if [ "$COUNT" -eq 0 ]; then
+            echo "::error::No approved review found. Deploy blocked."
+            exit 1
+          fi
+
+      - name: Determine version bump
+        id: bump
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          if [ -z "$PR_TITLE" ]; then
+            echo "type=patch" >> $GITHUB_OUTPUT
+          elif echo "$PR_TITLE" | grep -qE '(\!:)|BREAKING CHANGE'; then
+            echo "type=major" >> $GITHUB_OUTPUT
+          elif echo "$PR_TITLE" | grep -qE '^feat(\(.+\))?:'; then
+            echo "type=minor" >> $GITHUB_OUTPUT
+          else
+            echo "type=patch" >> $GITHUB_OUTPUT
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '23.8'
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: pnpm-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: pnpm-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # --- GCP Deploy (uncomment when ready) ---
+      # - name: Create .env file
+      #   run: |
+      #     echo "VITE_API_URL=${{ secrets.PROD_VITE_API_URL }}" > .env
+      #     echo "VITE_GAIA_APP_URL=${{ secrets.PROD_VITE_GAIA_APP_URL }}" >> .env
+      #     echo "VITE_CRIA_APP_URL=${{ secrets.PROD_VITE_CRIA_APP_URL }}" >> .env
+      #     echo "VITE_BRANDSYNC_APP_URL=${{ secrets.PROD_VITE_BRANDSYNC_APP_URL }}" >> .env
+      #     echo "VITE_COPIA_APP_URL=${{ secrets.PROD_VITE_COPIA_APP_URL }}" >> .env
+      #     echo "VITE_CVC_DASHBOARD_APP_URL=${{ secrets.PROD_VITE_CVC_DASHBOARD_APP_URL }}" >> .env
+      #     echo "VITE_SENTRY_DSN=${{ secrets.PROD_VITE_SENTRY_DSN }}" >> .env
+      #     echo "VITE_IS_SENTRY_ENABLED=${{ secrets.PROD_VITE_IS_SENTRY_ENABLED }}" >> .env
+
+      # - name: Build
+      #   run: pnpm build
+
+      # - name: Authenticate with GCP
+      #   uses: google-github-actions/auth@v1
+      #   with:
+      #     credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
+
+      # - name: Deploy to Cloud Storage
+      #   run: cd dist && gcloud storage cp --recursive . gs://${{ secrets.GCP_PROD_BUCKET }}
+
+      # - name: Invalidate CDN cache
+      #   run: gcloud compute url-maps invalidate-cdn-cache ${{ secrets.GCP_PROD_URL_MAP }} --path "/*" --async
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump version and create tag
+        id: version
+        run: |
+          BUMP_TYPE=${{ steps.bump.outputs.type }}
+          NEW_VERSION=$(npm version $BUMP_TYPE --no-git-tag-version)
+          git add package.json
+          git commit -m "chore: bump version to $NEW_VERSION"
+          git tag $NEW_VERSION
+          git push origin HEAD:main
+          git push origin $NEW_VERSION
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.new_version }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

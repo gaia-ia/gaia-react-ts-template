@@ -1,6 +1,10 @@
-import { SvgComponent } from '@assets/icons';
+import type { SvgComponent } from '@assets/icons';
 
-const InConstruction: SvgComponent = ({ size = '30', className = '' }) => {
+const InConstruction: SvgComponent = ({
+  title,
+  size = '30',
+  className = '',
+}) => {
   return (
     <svg
       width={size}
@@ -10,6 +14,7 @@ const InConstruction: SvgComponent = ({ size = '30', className = '' }) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>{title}</title>
       <path
         d="M277.2 281.004H296.508"
         stroke="var(--color-text-800)"
