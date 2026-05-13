@@ -12,8 +12,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@gaia-dev/ui':
-        specifier: ^4.0.0
-        version: 4.0.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(redux@5.0.1)
+        specifier: ^4.1.0
+        version: 4.1.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(redux@5.0.1)
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@5.7.2(react@19.2.5))
@@ -497,8 +497,8 @@ packages:
   '@gaia-dev/theme@1.0.0':
     resolution: {integrity: sha512-cIWP2FJp2UJaiXtN3j/zuALq7AGN3PBeJ6O9gfje4zbk+qEmD2myVV85HG67tpuglxJtjlsSIE8cF9BQpVrOYA==}
 
-  '@gaia-dev/ui@4.0.0':
-    resolution: {integrity: sha512-KV4DyydFLEtRsvXEsb+UrDwO2j4rkSEyERerEJK9tea7IX7y0vfVOlGZnvhK+TpqU4QZsiGiNO4bbX3HAhkCyA==}
+  '@gaia-dev/ui@4.1.0':
+    resolution: {integrity: sha512-Aak3V9wq5EBaXQdCc39r3Bci/6CBZN+jLS0oiT9M/E6IMwb6wEBfEhrtbgcVA+EFD6A4l42HPvx4YwsGtyYaJA==}
 
   '@hookform/resolvers@3.10.0':
     resolution: {integrity: sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==}
@@ -3145,6 +3145,12 @@ packages:
       '@types/react-dom':
         optional: true
 
+  react-colorful@5.7.0:
+    resolution: {integrity: sha512-fuesYIemttah97XmsIHmz4OORDHiSFzyc9HMAIrCHJou2jaRQmL8cFJ76K4zQhhj8jzwOBlOi4BaGTjjOZCfTg==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+
   react-confetti@6.4.0:
     resolution: {integrity: sha512-5MdGUcqxrTU26I2EU7ltkWPwxvucQTuqMm8dUz72z2YMqTD6s9vMcDUysk7n9jnC+lXuCPeJJ7Knf98VEYE9Rg==}
     engines: {node: '>=16'}
@@ -3229,6 +3235,12 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  react-resizable-panels@2.1.9:
+    resolution: {integrity: sha512-z77+X08YDIrgAes4jl8xhnUu1LNIRp4+E7cv4xHmLOxxUPO/ML7PSrE813b90vj7xvQ1lcf7g2uA9GeMZonjhQ==}
+    peerDependencies:
+      react: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+      react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
 
   react-router-dom@7.14.2:
     resolution: {integrity: sha512-YZcM5ES8jJSM+KrJ9BdvHHqlnGTg5tH3sC5ChFRj4inosKctdyzBDhOyyHdGk597q2OT6NTrCA1OvB/YDwfekQ==}
@@ -3974,7 +3986,7 @@ snapshots:
 
   '@gaia-dev/theme@1.0.0': {}
 
-  '@gaia-dev/ui@4.0.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(redux@5.0.1)':
+  '@gaia-dev/ui@4.1.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(redux@5.0.1)':
     dependencies:
       '@radix-ui/react-accordion': 1.2.12(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@radix-ui/react-avatar': 1.1.11(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -3988,7 +4000,9 @@ snapshots:
       lucide-react: 0.554.0(react@19.2.5)
       radix-ui: 1.4.3(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       react: 19.2.5
+      react-colorful: 5.7.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       react-day-picker: 9.14.0(react@19.2.5)
+      react-resizable-panels: 2.1.9(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       react-router-dom: 7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       react-tooltip: 5.30.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       recharts: 3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@17.0.2)(react@19.2.5)(redux@5.0.1)
@@ -6721,6 +6735,11 @@ snapshots:
       '@types/react': 19.2.14
       '@types/react-dom': 19.2.3(@types/react@19.2.14)
 
+  react-colorful@5.7.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+    dependencies:
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
+
   react-confetti@6.4.0(react@19.2.5):
     dependencies:
       react: 19.2.5
@@ -6803,6 +6822,11 @@ snapshots:
       use-sidecar: 1.1.3(@types/react@19.2.14)(react@19.2.5)
     optionalDependencies:
       '@types/react': 19.2.14
+
+  react-resizable-panels@2.1.9(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+    dependencies:
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
 
   react-router-dom@7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
     dependencies:
