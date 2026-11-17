@@ -51,6 +51,16 @@ const options = {
   lookupFromHashIndex: 0,
 };
 
+// O <html lang> precisa acompanhar o idioma real da UI. Com o "en" fixo do
+// index.html, o Chrome oferece traduzir uma página que já está em pt/es, e a
+// tradução troca os text nodes que o React controla: no próximo unmount o
+// React tenta remover um nó que não está mais lá e estoura
+// "NotFoundError: Failed to execute 'removeChild' on 'Node'".
+// Registrado antes do init para pegar também o idioma detectado na carga.
+i18n.on('languageChanged', lng => {
+  document.documentElement.lang = lng;
+});
+
 i18n
   .use(XHR)
   .use(LanguageDetector)
